@@ -1,0 +1,221 @@
+# Sintrix Technology - .htaccess Configuration
+# Configurações para HostGator e servidores Apache
+
+# ========================================
+# COMPRESSÃO GZIP
+# ========================================
+<IfModule mod_deflate.c>
+    # Compressão para diferentes tipos de arquivo
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
+
+# ========================================
+# CACHE DO NAVEGADOR
+# ========================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Imagens
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/ico "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    
+    # CSS e JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    
+    # Fontes
+    ExpiresByType font/woff "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 month"
+    ExpiresByType application/font-woff "access plus 1 month"
+    ExpiresByType application/font-woff2 "access plus 1 month"
+    
+    # HTML
+    ExpiresByType text/html "access plus 1 week"
+    
+    # Outros
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
+</IfModule>
+
+# ========================================
+# HEADERS DE CACHE
+# ========================================
+<IfModule mod_headers.c>
+    # Cache para arquivos estáticos
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    
+    # Cache para HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+</IfModule>
+
+# ========================================
+# SEGURANÇA
+# ========================================
+<IfModule mod_headers.c>
+    # Proteção XSS
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Previne MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Clickjacking protection
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy básico
+    Header always set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com https://use.typekit.net; img-src 'self' data: https:; connect-src 'self' https:;"
+</IfModule>
+
+# ========================================
+# REWRITE RULES
+# ========================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Força HTTPS (descomente se necessário)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Remove www (descomente se preferir sem www)
+    # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    
+    # Clean URLs para páginas específicas
+    RewriteRule ^rhdocs/?$ pages/rhdocs.php [L]
+    RewriteRule ^medplaces/?$ pages/medplaces.php [L]
+    RewriteRule ^whatsapp-bot/?$ pages/whatsapp-bot.php [L]
+    RewriteRule ^cloud-data/?$ pages/cloud-data.php [L]
+    RewriteRule ^vpn-corporativa/?$ pages/vpn-corporativa.php [L]
+    RewriteRule ^email-corporativo/?$ pages/email-corporativo.php [L]
+    RewriteRule ^telefonia-voip/?$ pages/telefonia-voip.php [L]
+    
+    # Redireciona .html para .php
+    RewriteRule ^(.*)\.html$ $1.php [R=301,L]
+    
+    # Adiciona extensão .php automaticamente
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^([^.]+)$ $1.php [NC,L]
+    
+    # Remove extensão .php da URL
+    RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+    RewriteRule ^ /%1 [NC,L,R=301]
+</IfModule>
+
+# ========================================
+# PÁGINAS DE ERRO PERSONALIZADAS
+# ========================================
+ErrorDocument 404 /pages/404.php
+ErrorDocument 403 /pages/403.php
+ErrorDocument 500 /pages/500.php
+
+# ========================================
+# PROTEÇÃO DE ARQUIVOS
+# ========================================
+# Bloqueia acesso a arquivos sensíveis
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+    Require all denied
+</FilesMatch>
+
+# ========================================
+# MIME TYPES
+# ========================================
+<IfModule mod_mime.c>
+    # Adiciona tipos MIME para fontes web
+    AddType application/font-woff .woff
+    AddType application/font-woff2 .woff2
+    AddType application/vnd.ms-fontobject .eot
+    AddType application/x-font-ttf .ttf
+    
+    # SVG
+    AddType image/svg+xml .svg .svgz
+    
+    # WebP
+    AddType image/webp .webp
+    
+    # JSON
+    AddType application/json .json
+</IfModule>
+
+# ========================================
+# OTIMIZAÇÕES ADICIONAIS
+# ========================================
+# Remove ETag (conflita com cache)
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# Desabilita server signature
+ServerSignature Off
+
+# Limite de upload (ajuste conforme necessário)
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value max_execution_time 300
+php_value max_input_vars 3000
+
+# ========================================
+# REDIRECIONAMENTOS ESPECÍFICOS
+# ========================================
+<IfModule mod_rewrite.c>
+    # Redireciona páginas antigas (exemplo)
+    # Redirect 301 /old-page.html /new-page
+    
+    # Redireciona index.php para raiz
+    RewriteRule ^index\.php$ / [R=301,L]
+</IfModule>
+
+# ========================================
+# COMPRESSÃO ADICIONAL
+# ========================================
+<IfModule mod_gzip.c>
+    mod_gzip_on Yes
+    mod_gzip_dechunk Yes
+    mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$
+    mod_gzip_item_include handler ^cgi-script$
+    mod_gzip_item_include mime ^text/.*
+    mod_gzip_item_include mime ^application/x-javascript.*
+    mod_gzip_item_exclude mime ^image/.*
+    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+# ========================================
+# CONFIGURAÇÕES FINAIS
+# ========================================
+# Charset padrão
+AddDefaultCharset UTF-8
+
+# Oculta versão do servidor
+<IfModule mod_headers.c>
+    Header always unset Server
+    Header always unset X-Powered-By
+</IfModule>
