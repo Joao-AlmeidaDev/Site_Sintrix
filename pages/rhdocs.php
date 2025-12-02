@@ -2,12 +2,13 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <?php include __DIR__ . '/../includes/google-analytics.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>RH Docs - Gestão de Recursos Humanos | Sintrix Technology</title>
     <meta name="description" content="RHDocs: Sistema completo de gestão e distribui��o de holerites com portal web, email e WhatsApp. Simplifique a gestão de RH da sua empresa.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../public/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="../public/assets/favicon.png?v=<?php echo time(); ?>">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <!-- Bootstrap 5 CSS -->
@@ -15,7 +16,7 @@
     
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../public/css/animations.css">
     <link rel="stylesheet" href="../public/css/responsive.css">
     <link rel="stylesheet" href="../public/css/tailwind-utilities.css">
@@ -23,8 +24,7 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS removido -->
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -472,6 +472,8 @@
     </section>
 
     <?php include '../includes/footer.php'; ?>
+    <?php include '../includes/cookie-banner.php'; ?>
+    <?php include '../includes/analytics-tracking.php'; ?>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

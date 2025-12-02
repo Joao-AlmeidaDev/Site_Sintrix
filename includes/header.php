@@ -6,10 +6,10 @@ $navbarClass = (basename(dirname($_SERVER['PHP_SELF'])) === 'pages') ? 'navbar s
 <!-- Navigation -->
 <nav class="<?php echo $navbarClass; ?>" id="navbar">
     <div class="nav-container px-4 md:px-8">
-        <div class="nav-logo">
-            <img src="<?php echo $base; ?>public/assets/logo.svg?v=<?php echo time(); ?>" alt="Sintrix Logo" class="logo-img">
-            <span class="logo-text">Sintrix</span>
-        </div>
+        <a href="<?php echo $base; ?>index.php" class="nav-logo" style="text-decoration: none; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+            <img src="<?php echo $base; ?>public/assets/logo.png?v=<?php echo time(); ?>" alt="Sintrix Logo" class="logo-img">
+            <span class="logo-text">SINTRIX</span>
+        </a>
         
         <ul class="nav-menu" id="nav-menu">
             <li class="nav-item">
@@ -21,8 +21,29 @@ $navbarClass = (basename(dirname($_SERVER['PHP_SELF'])) === 'pages') ? 'navbar s
             <li class="nav-item">
                 <a href="<?php echo $base; ?>index.php#services" class="nav-link">Serviços</a>
             </li>
-            <li class="nav-item">
-                <a href="<?php echo $base; ?>index.php#solutions" class="nav-link">Soluções</a>
+            <li class="nav-item nav-dropdown">
+                <a href="#" class="nav-link dropdown-toggle">
+                    Soluções
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="https://rhdocs.com.br" target="_blank" class="dropdown-item">
+                        <i class="fas fa-users"></i>
+                        RHDocs
+                    </a>
+                    <a href="https://medplaces.org" target="_blank" class="dropdown-item">
+                        <i class="fas fa-hospital"></i>
+                        MedPlaces
+                    </a>
+                    <a href="<?php echo $base; ?>pages/messenger-pro.php" class="dropdown-item">
+                        <i class="fas fa-comments"></i>
+                        Messenger Pro
+                    </a>
+                    <a href="<?php echo $base; ?>pages/telefonia-voip.php" class="dropdown-item">
+                        <i class="fas fa-phone"></i>
+                        Telefonia VoIP
+                    </a>
+                </div>
             </li>
             <li class="nav-item nav-dropdown">
                 <a href="#" class="nav-link dropdown-toggle">

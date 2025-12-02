@@ -7,10 +7,10 @@
 // Configurações do Site
 define('SITE_NAME', 'Sintrix Technology');
 define('SITE_TAGLINE', '23 Anos de Inovação em TI');
-define('SITE_URL', 'https://sintrixtechnology.com.br');
-define('SITE_EMAIL', 'contato@sintrixtechnology.com.br');
-define('SITE_PHONE', '(11) 99999-9999');
-define('SITE_ADDRESS', 'Rua da Tecnologia, 123 - Centro - Cidade/SP');
+define('SITE_URL', 'https://sintrix.com.br');
+define('SITE_EMAIL', 'contato@sintrix.com.br');
+define('SITE_PHONE', '(11) 97377-4109');
+define('SITE_ADDRESS', 'Rua Borges Vieira, 174 - Vila Industrial - Mogi das Cruzes/SP');
 define('SITE_YEAR', date('Y'));
 
 // Configurações de Desenvolvimento
@@ -30,18 +30,18 @@ define('MEDPLACES_URL', 'https://medplaces.org');
 // Configurações de SEO
 $seo_config = [
     'default_title' => SITE_NAME . ' - ' . SITE_TAGLINE,
-    'default_description' => '23 anos de excelência em serviços de TI, oferecendo soluções inovadoras e seguras para impulsionar o seu negócio no mundo digital.',
-    'default_keywords' => 'TI, tecnologia, serviços, consultoria, helpdesk, servidores, segurança, dados, RHDocs, MedPlaces, WhatsApp Bot, VoIP',
-    'default_image' => '/public/assets/og-image.jpg'
+    'default_description' => 'Sintrix Technology - 23 anos de excelência em TI! Empresa líder em Mogi das Cruzes oferecendo soluções completas: ✓ Helpdesk Especializado 24/7 ✓ Cloud Data Próprio ✓ Telefonia VoIP Empresarial ✓ VPN Corporativa Segura ✓ Email Corporativo Profissional ✓ Desenvolvimento de Software Personalizado. Conheça nossas plataformas: RHDocs (Gestão de Holerites) e MedPlaces (PACS em Nuvem). Infraestrutura robusta, segurança avançada, consultoria especializada e suporte técnico que transforma negócios. Agende uma consultoria gratuita!',
+    'default_keywords' => 'sintrix, sintrix technology, empresa TI, serviços TI, tecnologia da informação, TI Mogi das Cruzes, suporte técnico, helpdesk, consultoria TI, infraestrutura TI, servidores, segurança da informação, proteção de dados, backup, cloud computing, nuvem, datacenter, VoIP, telefonia IP, telefonia empresarial, email corporativo, VPN corporativa, rede corporativa, desenvolvimento software, software personalizado, sistema gestão, RHDocs, holerite online, gestão RH, MedPlaces, exames online, PACS, sistema médico, chatbot, automação WhatsApp, messenger pro, atendimento automatizado, manutenção computadores, suporte 24/7, segurança cibernética, backup automático, recuperação dados, servidor dedicado, hospedagem, domínio, certificado digital, firewall, antivírus corporativo, monitoramento rede, help desk empresarial, outsourcing TI, terceirização TI, soluções tecnológicas, transformação digital, inovação tecnológica, TI estratégica',
+    'default_image' => '/public/assets/favicon.png'
 ];
 
 // Configurações de Contato
 $contact_config = [
     'email' => SITE_EMAIL,
     'phone' => SITE_PHONE,
-    'whatsapp' => '5511999999999',
+    'whatsapp' => '5511973774109',
     'address' => SITE_ADDRESS,
-    'business_hours' => 'Segunda a Sexta: 8h às 18h',
+    'business_hours' => 'Segunda a Sexta: 8h às 17h',
     'support_24_7' => true
 ];
 
@@ -159,11 +159,65 @@ function generateMetaTags($title = null, $description = null, $keywords = null, 
     $meta .= "<title>" . htmlspecialchars($title) . "</title>\n";
     $meta .= "<meta name=\"description\" content=\"" . htmlspecialchars($description) . "\">\n";
     $meta .= "<meta name=\"keywords\" content=\"" . htmlspecialchars($keywords) . "\">\n";
+    $meta .= "<meta name=\"author\" content=\"Sintrix Technology\">\n";
+    $meta .= "<meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\">\n";
+    $meta .= "<link rel=\"canonical\" href=\"" . SITE_URL . "\">\n";
+    
+    // Open Graph (WhatsApp, Facebook, LinkedIn)
+    $meta .= "<meta property=\"og:locale\" content=\"pt_BR\">\n";
+    $meta .= "<meta property=\"og:type\" content=\"website\">\n";
     $meta .= "<meta property=\"og:title\" content=\"" . htmlspecialchars($title) . "\">\n";
     $meta .= "<meta property=\"og:description\" content=\"" . htmlspecialchars($description) . "\">\n";
     $meta .= "<meta property=\"og:image\" content=\"" . SITE_URL . htmlspecialchars($image) . "\">\n";
-    $meta .= "<meta property=\"og:url\" content=\"" . SITE_URL . "\">\n";
+    $meta .= "<meta property=\"og:image:secure_url\" content=\"" . SITE_URL . htmlspecialchars($image) . "\">\n";
+    $meta .= "<meta property=\"og:image:alt\" content=\"Sintrix Technology - 23 Anos de Inovação em TI\">\n";
+    $meta .= "<meta property=\"og:image:type\" content=\"image/png\">\n";
+    $meta .= "<meta property=\"og:url\" content=\"" . SITE_URL . $_SERVER['REQUEST_URI'] . "\">\n";
+    $meta .= "<meta property=\"og:site_name\" content=\"Sintrix Technology\">\n";
+    $meta .= "<meta property=\"article:publisher\" content=\"" . SITE_URL . "\">\n";
+    
+    // Twitter Card
     $meta .= "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
+    $meta .= "<meta name=\"twitter:site\" content=\"@sintrix\">\n";
+    $meta .= "<meta name=\"twitter:title\" content=\"" . htmlspecialchars($title) . "\">\n";
+    $meta .= "<meta name=\"twitter:description\" content=\"" . htmlspecialchars($description) . "\">\n";
+    $meta .= "<meta name=\"twitter:image\" content=\"" . SITE_URL . htmlspecialchars($image) . "\">\n";
+    $meta .= "<meta name=\"twitter:image:alt\" content=\"Sintrix Technology - 23 Anos de Inovação em TI\">\n";
+    
+    // WhatsApp específico
+    $meta .= "<meta property=\"og:phone_number\" content=\"+55-11-97377-4109\">\n";
+    
+    // Schema.org structured data
+    $meta .= "<script type=\"application/ld+json\">\n";
+    $meta .= "{\n";
+    $meta .= "  \"@context\": \"https://schema.org\",\n";
+    $meta .= "  \"@type\": \"Organization\",\n";
+    $meta .= "  \"name\": \"Sintrix Technology\",\n";
+    $meta .= "  \"url\": \"" . SITE_URL . "\",\n";
+    $meta .= "  \"logo\": \"" . SITE_URL . "/public/assets/logo.png\",\n";
+    $meta .= "  \"description\": \"" . htmlspecialchars($description) . "\",\n";
+    $meta .= "  \"address\": {\n";
+    $meta .= "    \"@type\": \"PostalAddress\",\n";
+    $meta .= "    \"streetAddress\": \"Rua Borges Vieira, 174\",\n";
+    $meta .= "    \"addressLocality\": \"Mogi das Cruzes\",\n";
+    $meta .= "    \"addressRegion\": \"SP\",\n";
+    $meta .= "    \"postalCode\": \"08770-100\",\n";
+    $meta .= "    \"addressCountry\": \"BR\"\n";
+    $meta .= "  },\n";
+    $meta .= "  \"contactPoint\": {\n";
+    $meta .= "    \"@type\": \"ContactPoint\",\n";
+    $meta .= "    \"telephone\": \"+55-11-97377-4109\",\n";
+    $meta .= "    \"contactType\": \"customer service\",\n";
+    $meta .= "    \"availableLanguage\": \"Portuguese\"\n";
+    $meta .= "  },\n";
+    $meta .= "  \"sameAs\": [\n";
+    $meta .= "    \"https://rhdocs.com.br\",\n";
+    $meta .= "    \"https://medplaces.org\"\n";
+    $meta .= "  ],\n";
+    $meta .= "  \"areaServed\": \"BR\",\n";
+    $meta .= "  \"foundingDate\": \"2002\"\n";
+    $meta .= "}\n";
+    $meta .= "</script>\n";
     
     return $meta;
 }

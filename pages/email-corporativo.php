@@ -1,848 +1,706 @@
-﻿<!DOCTYPE html>
+<?php
+// Carrega configurações principais (caminhos e helper includeFile)
+require_once __DIR__ . '/../config/config.php';
+?>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <?php include __DIR__ . '/../includes/google-analytics.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Email Corporativo | Sintrix Technology</title>
-    <meta name="description" content="Email corporativo profissional com anti-spam, backup automático e sincroniza��o total. gestão completa de emails para empresas.">
-    <meta name="keywords" content="email corporativo, gestão email, anti-spam, backup email, email empresarial">
+    <title>Hospedagem de Email Corporativo | Sintrix Technology</title>
+    <meta name="description" content="Hospedagem profissional de email corporativo com suporte técnico completo. Emails e sites com gestão especializada e backup automático.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../public/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="../public/assets/favicon.png?v=<?php echo time(); ?>">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../public/css/animations.css">
     <link rel="stylesheet" href="../public/css/responsive.css">
     <link rel="stylesheet" href="../public/css/tailwind-utilities.css">
     
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Critical CSS for preventing horizontal scroll -->
-    <style>
-        html, body {
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            box-sizing: border-box !important;
-        }
-        
-        * {
-            box-sizing: border-box !important;
-        }
-    </style>
-    
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    screens: {
-                        'xs': '475px',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind CSS removido -->
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        .email-hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            position: relative;
-            padding: 120px 0 80px;
-            overflow: hidden;
+        /* Estilos específicos para Email Corporativo */
+        .email-hosting-section {
+            background: var(--dark-bg);
+            padding: 100px 0;
         }
         
-        .email-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        .section-header {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .email-envelope {
-            position: absolute;
-            color: rgba(0, 212, 255, 0.1);
-            font-size: 2rem;
-            animation: emailFloat 6s ease-in-out infinite;
+        .hosting-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .email-envelope:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .email-envelope:nth-child(2) {
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-        
-        .email-envelope:nth-child(3) {
-            bottom: 30%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-        
-        @keyframes emailFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
-            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.3; }
-        }
-        
-        .email-interface {
-            background: var(--card-bg);
+        .hosting-feature-card {
+            background: var(--gradient-surface);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 0;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 35px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .email-header {
+        .hosting-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
             background: var(--gradient-primary);
-            padding: 15px 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .hosting-feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 60px rgba(123, 47, 255, 0.25);
+        }
+        
+        .hosting-feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon-large {
+            width: 70px;
+            height: 70px;
+            background: rgba(123, 47, 255, 0.1);
+            border-radius: 16px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-        }
-        
-        .email-controls {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .email-btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .email-title {
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .email-sidebar {
-            display: flex;
-            height: 400px;
-        }
-        
-        .email-folders {
-            width: 200px;
-            background: #1e1e2e;
-            padding: 20px 0;
-            border-right: 1px solid var(--border-color);
-        }
-        
-        .folder-item {
-            padding: 12px 20px;
-            color: var(--gray-text);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-        }
-        
-        .folder-item:hover,
-        .folder-item.active {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--primary-color);
-        }
-        
-        .email-content {
-            flex: 1;
-            padding: 20px;
-        }
-        
-        .email-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition-smooth);
-        }
-        
-        .email-item:hover {
-            background: rgba(0, 212, 255, 0.05);
-            margin: 0 -20px;
-            padding: 15px 20px;
-            border-radius: 8px;
-        }
-        
-        .email-status {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--primary-color);
-        }
-        
-        .email-status.read {
-            background: var(--gray-text);
-        }
-        
-        .email-from {
-            font-weight: 600;
-            color: var(--light-text);
-            min-width: 120px;
-        }
-        
-        .email-subject {
-            flex: 1;
-            color: var(--gray-text);
-        }
-        
-        .email-time {
-            color: var(--gray-text);
-            font-size: 0.8rem;
-        }
-        
-        .feature-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 50px 0;
-        }
-        
-        .comparison-side {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            position: relative;
-        }
-        
-        .comparison-side.problem {
-            border: 2px solid #ff4757;
-        }
-        
-        .comparison-side.solution {
-            border: 2px solid #2ed573;
-        }
-        
-        .comparison-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            justify-content: center;
             margin-bottom: 25px;
         }
         
-        .comparison-icon {
+        .feature-icon-large i {
             font-size: 2rem;
+            color: var(--primary-color);
         }
         
-        .comparison-side.problem .comparison-icon {
-            color: #ff4757;
+        .hosting-feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--light-text);
+            margin: 0 0 15px 0;
+            font-weight: 700;
         }
         
-        .comparison-side.solution .comparison-icon {
-            color: #2ed573;
+        .hosting-feature-card p {
+            color: var(--gray-text);
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
         
-        .feature-list {
+        .feature-highlights {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         
-        .feature-list-item {
+        .feature-highlights span {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: var(--gray-text);
-        }
-        
-        .feature-list-item.problem {
-            color: #ff4757;
-        }
-        
-        .feature-list-item.solution {
-            color: #2ed573;
-        }
-        
-        .email-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .stat-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
             color: var(--light-text);
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 0.95rem;
         }
         
-        .stat-description {
-            color: var(--gray-text);
+        .feature-highlights i {
+            color: var(--primary-color);
             font-size: 0.9rem;
         }
         
-        @media (max-width: 768px) {
-            .feature-comparison {
+        /* Seção de Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .service-card {
+            background: var(--gradient-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .service-icon-box {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(123, 47, 255, 0.3);
+        }
+        
+        .service-icon-box i {
+            font-size: 2.2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--light-text);
+            margin: 0 0 15px 0;
+            font-weight: 700;
+        }
+        
+        .service-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+        
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .service-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+        
+        .service-feature-item i {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+        }
+        
+        /* Seção de Suporte */
+        .support-section {
+            background: linear-gradient(135deg, rgba(123, 47, 255, 0.05) 0%, transparent 100%);
+            padding: 100px 0;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .support-content h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--light-text);
+            margin: 0 0 20px 0;
+            font-weight: 700;
+        }
+        
+        .support-content p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+        
+        .support-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .support-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: var(--gradient-surface);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .support-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .support-item-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .support-item-icon i {
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .support-item-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin: 0 0 8px 0;
+            font-weight: 600;
+        }
+        
+        .support-item-content p {
+            color: var(--gray-text);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .support-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .support-stat-card {
+            background: var(--gradient-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .support-stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .support-stat-label {
+            color: var(--light-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .support-stat-desc {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 968px) {
+            .services-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
             
-            .email-sidebar {
-                flex-direction: column;
-                height: auto;
+            .support-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             
-            .email-folders {
-                width: 100%;
-                display: flex;
-                overflow-x: auto;
-                padding: 10px 0;
+            .service-features {
+                grid-template-columns: 1fr;
             }
-            
-            .folder-item {
-                white-space: nowrap;
-                padding: 8px 15px;
+        }
+        
+        @media (max-width: 640px) {
+            .hosting-features-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php include __DIR__ . '/../includes/header.php'; ?>
 
     <!-- Hero Section -->
-    <section class="email-hero">
-        <div class="email-particles">
-            <i class="fas fa-envelope email-envelope"></i>
-            <i class="fas fa-paper-plane email-envelope"></i>
-            <i class="fas fa-at email-envelope"></i>
-        </div>
-        
-        <div class="container px-4 md:px-8">
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="hero-content">
-                        <h1 class="hero-title">
-                            <span class="gradient-text">Email Corporativo</span><br>
-                            Profissional e seguranÃ§auro
-                        </h1>
-                        <p class="hero-description">
-                            Abandone emails gratuitos! Tenha um sistema profissional completo com 
-                            seu dom�nio, anti-spam inteligente, backup automático e sincroniza��o 
-                            perfeita. <strong>Sua empresa merece um email � altura do seu neg�cio!</strong>
-                        </p>
-                        
-                        <div class="hero-features">
-                            <div class="feature-item">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Anti-Spam avan�ado</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-sync"></i>
-                                <span>Sincroniza��o Total</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-backup"></i>
-                                <span>Backup automático</span>
-                            </div>
-                        </div>
-                        
-                        <div class="hero-actions">
-                            <a href="#plans" class="btn-primary">
-                                <i class="fas fa-rocket"></i>
-                                <span>Ver Planos</span>
-                            </a>
-                            <a href="#demo" class="btn-secondary">
-                                <i class="fas fa-play"></i>
-                                <span>Ver Interface</span>
-                            </a>
-                        </div>
-                    </div>
+    <section class="hero modern-hero">
+        <div class="hero-container px-4 md:px-8" style="display: flex; justify-content: center; align-items: center;">
+            <div class="hero-content" style="text-align: center; max-width: 900px; width: 100%;">
+                <div class="badge" data-aos="fade-up" style="justify-content: center;">
+                    <i class="fas fa-server"></i>
+                    <span>Hospedagem Profissional</span>
                 </div>
                 
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="email-interface">
-                        <div class="email-header">
-                            <div class="email-controls">
-                                <div class="email-btn"></div>
-                                <div class="email-btn"></div>
-                                <div class="email-btn"></div>
-                            </div>
-                            <div class="email-title">suaempresa@seudominio.com.br</div>
-                            <div style="color: rgba(255,255,255,0.7); font-size: 0.8rem;">
-                                Online � Sincronizado
-                            </div>
-                        </div>
-                        
-                        <div class="email-sidebar">
-                            <div class="email-folders">
-                                <div class="folder-item active">
-                                    <i class="fas fa-inbox"></i>
-                                    <span>Caixa de Entrada</span>
-                                </div>
-                                <div class="folder-item">
-                                    <i class="fas fa-paper-plane"></i>
-                                    <span>Enviados</span>
-                                </div>
-                                <div class="folder-item">
-                                    <i class="fas fa-star"></i>
-                                    <span>Importantes</span>
-                                </div>
-                                <div class="folder-item">
-                                    <i class="fas fa-trash"></i>
-                                    <span>Spam Bloqueado</span>
-                                </div>
-                            </div>
-                            
-                            <div class="email-content">
-                                <div class="email-item">
-                                    <div class="email-status"></div>
-                                    <div class="email-from">Cliente Premium</div>
-                                    <div class="email-subject">Proposta Comercial - Projeto 2024</div>
-                                    <div class="email-time">09:30</div>
-                                </div>
-                                
-                                <div class="email-item">
-                                    <div class="email-status"></div>
-                                    <div class="email-from">Fornecedor ABC</div>
-                                    <div class="email-subject">Cota��o Solicitada - Urgente</div>
-                                    <div class="email-time">08:45</div>
-                                </div>
-                                
-                                <div class="email-item">
-                                    <div class="email-status read"></div>
-                                    <div class="email-from">Equipe Interna</div>
-                                    <div class="email-subject">Reuni�o Semanal - relat�rio</div>
-                                    <div class="email-time">Ontem</div>
-                                </div>
-                                
-                                <div class="email-item">
-                                    <div class="email-status read"></div>
-                                    <div class="email-from">Contador</div>
-                                    <div class="email-subject">Documentos Fiscais - an�lise</div>
-                                    <div class="email-time">Ontem</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                    Hospedagem de
+                    <span class="gradient-text">Email e Sites</span>
+                    com Suporte Técnico
+                </h1>
+                
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="200" style="text-align: center; margin-left: auto; margin-right: auto;">
+                    Solução completa de hospedagem para emails corporativos e sites. 
+                    Suporte técnico especializado incluído para todas as suas necessidades.
+                </p>
+                
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="300" style="justify-content: center;">
+                    <a href="#contact" class="btn-primary">
+                        <span>Contratar Agora</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Ver Serviços</span>
+                    </a>
                 </div>
+            </div>
+        </div>
+        
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="floating-elements">
+                <div class="float-element"></div>
+                <div class="float-element"></div>
+                <div class="float-element"></div>
             </div>
         </div>
     </section>
 
-    <!-- Problems vs Solutions -->
-    <section class="section">
+    <!-- Services Section -->
+    <section id="services" class="email-hosting-section">
         <div class="container px-4 md:px-8">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Problemas vs Solu��es</span>
-                <h2 class="section-title">Por que mudar do Email Gratuito?</h2>
+            <div class="section-header" data-aos="fade-up" style="text-align: center;">
+                <span class="section-subtitle">O Que Oferecemos</span>
+                <h2 class="section-title">
+                    Hospedagem Completa com
+                    <span class="gradient-text">Suporte Técnico</span>
+                </h2>
                 <p class="section-description">
-                    Veja a diferen�a entre usar emails gratuitos e ter um sistema profissional
+                    Representamos serviços de hospedagem profissional com gestão técnica completa
                 </p>
             </div>
             
-            <div class="feature-comparison" data-aos="fade-up">
-                <div class="comparison-side problem">
-                    <div class="comparison-header">
-                        <i class="fas fa-exclamation-triangle comparison-icon"></i>
-                        <div>
-                            <h3 style="color: #ff4757; margin-bottom: 5px;">Emails Gratuitos</h3>
-                            <p style="color: var(--gray-text); margin: 0;">Gmail, Outlook, Yahoo...</p>
-                        </div>
+            <div class="services-grid">
+                <!-- Email Hosting -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-badge">Completo</div>
+                    <div class="service-icon-box">
+                        <i class="fas fa-envelope-open-text"></i>
                     </div>
+                    <h3>Hospedagem de Email</h3>
+                    <p>Email corporativo profissional com seu domínio, garantindo credibilidade e segurança para sua comunicação empresarial.</p>
                     
-                    <div class="feature-list">
-                        <div class="feature-list-item problem">
-                            <i class="fas fa-times"></i>
-                            <span>Apar�ncia n�o profissional (@gmail.com)</span>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Domínio próprio</span>
                         </div>
-                        <div class="feature-list-item problem">
-                            <i class="fas fa-times"></i>
-                            <span>Spam constante na caixa de entrada</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Anti-spam avançado</span>
                         </div>
-                        <div class="feature-list-item problem">
-                            <i class="fas fa-times"></i>
-                            <span>Limita��o de armazenamento</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Backup automático</span>
                         </div>
-                        <div class="feature-list-item problem">
-                            <i class="fas fa-times"></i>
-                            <span>Sem backup garantido</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Webmail moderno</span>
                         </div>
-                        <div class="feature-list-item problem">
-                            <i class="fas fa-times"></i>
-                            <span>Depend�ncia de terceiros</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sincronização total</span>
                         </div>
-                        <div class="feature-list-item problem">
-                            <i class="fas fa-times"></i>
-                            <span>Problemas de sincroniza��o</span>
-                        </div>
-                        <div class="feature-list-item problem">
-                            <i class="fas fa-times"></i>
-                            <span>Suporte limitado</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>SSL/TLS criptografado</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="comparison-side solution">
-                    <div class="comparison-header">
-                        <i class="fas fa-check-circle comparison-icon"></i>
-                        <div>
-                            <h3 style="color: #2ed573; margin-bottom: 5px;">Email Sintrix Corporativo</h3>
-                            <p style="color: var(--gray-text); margin: 0;">seu@dominio.com.br</p>
-                        </div>
+
+                <!-- Website Hosting -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-badge">Performance</div>
+                    <div class="service-icon-box">
+                        <i class="fas fa-globe"></i>
                     </div>
+                    <h3>Hospedagem de Sites</h3>
+                    <p>Hospedagem profissional para seu site com alta performance, segurança e disponibilidade garantida 24/7.</p>
                     
-                    <div class="feature-list">
-                        <div class="feature-list-item solution">
-                            <i class="fas fa-check"></i>
-                            <span>Dom�nio Pr�prio, imagem profissional</span>
+                    <div class="service-features">
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>SSD ultra-rápido</span>
                         </div>
-                        <div class="feature-list-item solution">
-                            <i class="fas fa-check"></i>
-                            <span>Anti-spam inteligente 99.9% eficaz</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>SSL grátis incluído</span>
                         </div>
-                        <div class="feature-list-item solution">
-                            <i class="fas fa-check"></i>
-                            <span>Armazenamento ilimitado disponível</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>CDN integrado</span>
                         </div>
-                        <div class="feature-list-item solution">
-                            <i class="fas fa-check"></i>
-                            <span>Backup automático di�rio</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>99.9% uptime</span>
                         </div>
-                        <div class="feature-list-item solution">
-                            <i class="fas fa-check"></i>
-                            <span>Controle total dos seus dados</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Backup diário</span>
                         </div>
-                        <div class="feature-list-item solution">
-                            <i class="fas fa-check"></i>
-                            <span>Sincroniza��o perfeita multi-dispositivo</span>
-                        </div>
-                        <div class="feature-list-item solution">
-                            <i class="fas fa-check"></i>
-                            <span>Suporte especializado 24/7</span>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Firewall proteção</span>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="email-stats" data-aos="fade-up">
-                <div class="stat-card">
-                    <div class="stat-number">99.9%</div>
-                    <div class="stat-label">Efic�cia Anti-Spam</div>
-                    <div class="stat-description">Bloqueio inteligente de emails indesejados</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Disponibilidade</div>
-                    <div class="stat-description">Acesso garantido em qualquer momento</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Sincroniza��o</div>
-                    <div class="stat-description">Todos os dispositivos sempre atualizados</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">usuários</div>
-                    <div class="stat-description">Crie quantos emails precisar</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section" id="demo">
+    <section class="email-hosting-section">
         <div class="container px-4 md:px-8">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Recursos avan�ados</span>
-                <h2 class="section-title">Tudo que sua Empresa Precisa</h2>
-                <p class="section-description">
-                    funcionalidades profissionais para maximizar a produtividade
-                </p>
+            <div class="section-header" data-aos="fade-up" style="text-align: center;">
+                <span class="section-subtitle">Diferenciais</span>
+                <h2 class="section-title">
+                    Por Que Escolher
+                    <span class="gradient-text">Nossa Hospedagem</span>
+                </h2>
             </div>
             
-            <div class="security-features" data-aos="fade-up">
-                <div class="security-item">
-                    <i class="fas fa-shield-alt security-icon"></i>
-                    <div class="security-text">
-                        <h4>Anti-Spam Inteligente</h4>
-                        <p>Sistema avan�ado que aprende e bloqueia automaticamente emails maliciosos</p>
+            <div class="hosting-features-grid">
+                <div class="hosting-feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon-large">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança Máxima</h3>
+                    <p>Proteção completa com anti-spam, antivírus, firewall e criptografia SSL/TLS em todas as comunicações.</p>
+                    <div class="feature-highlights">
+                        <span><i class="fas fa-check"></i> Filtro anti-spam inteligente</span>
+                        <span><i class="fas fa-check"></i> Proteção antivírus em tempo real</span>
+                        <span><i class="fas fa-check"></i> Certificado SSL incluído</span>
                     </div>
                 </div>
-                
-                <div class="security-item">
-                    <i class="fas fa-sync security-icon"></i>
-                    <div class="security-text">
-                        <h4>Sincroniza��o Multi-Dispositivo</h4>
-                        <p>Acesse seus emails em qualquer lugar: celular, tablet, notebook</p>
+
+                <div class="hosting-feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon-large">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Backup Automático</h3>
+                    <p>Backups automáticos diários de emails e sites. Seus dados sempre seguros e recuperáveis.</p>
+                    <div class="feature-highlights">
+                        <span><i class="fas fa-check"></i> Backup diário automático</span>
+                        <span><i class="fas fa-check"></i> Retenção de 30 dias</span>
+                        <span><i class="fas fa-check"></i> Restauração rápida</span>
                     </div>
                 </div>
-                
-                <div class="security-item">
-                    <i class="fas fa-backup security-icon"></i>
-                    <div class="security-text">
-                        <h4>Backup automático</h4>
-                        <p>Todos os emails salvos automaticamente, recupera��o garantida</p>
+
+                <div class="hosting-feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon-large">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Acesso em Qualquer Lugar</h3>
+                    <p>Webmail moderno e sincronização com todos dispositivos. Trabalhe de onde estiver.</p>
+                    <div class="feature-highlights">
+                        <span><i class="fas fa-check"></i> Webmail responsivo</span>
+                        <span><i class="fas fa-check"></i> Apps móveis nativos</span>
+                        <span><i class="fas fa-check"></i> Sincronização em tempo real</span>
                     </div>
                 </div>
-                
-                <div class="security-item">
-                    <i class="fas fa-users security-icon"></i>
-                    <div class="security-text">
-                        <h4>gestão de usuários</h4>
-                        <p>Crie, edite e gerencie todos os emails da empresa em um s� lugar</p>
+
+                <div class="hosting-feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon-large">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Alta Performance</h3>
+                    <p>Infraestrutura moderna com servidores SSD e otimização para máxima velocidade e estabilidade.</p>
+                    <div class="feature-highlights">
+                        <span><i class="fas fa-check"></i> Servidores SSD NVMe</span>
+                        <span><i class="fas fa-check"></i> CDN global incluído</span>
+                        <span><i class="fas fa-check"></i> Cache inteligente</span>
                     </div>
                 </div>
-                
-                <div class="security-item">
-                    <i class="fas fa-calendar security-icon"></i>
-                    <div class="security-text">
-                        <h4>Calend�rio Integrado</h4>
-                        <p>Agenda compartilhada, reuni�es sincronizadas com toda a equipe</p>
+
+                <div class="hosting-feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon-large">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Painel de Controle</h3>
+                    <p>Gerencie emails, domínios e configurações através de painel administrativo intuitivo e moderno.</p>
+                    <div class="feature-highlights">
+                        <span><i class="fas fa-check"></i> Interface intuitiva</span>
+                        <span><i class="fas fa-check"></i> Gestão completa</span>
+                        <span><i class="fas fa-check"></i> Relatórios detalhados</span>
                     </div>
                 </div>
-                
-                <div class="security-item">
-                    <i class="fas fa-mobile-alt security-icon"></i>
-                    <div class="security-text">
-                        <h4>Apps Nativos</h4>
-                        <p>Configure facilmente no Outlook, Apple Mail, Gmail app</p>
+
+                <div class="hosting-feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon-large">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                </div>
-                
-                <div class="security-item">
-                    <i class="fas fa-search security-icon"></i>
-                    <div class="security-text">
-                        <h4>Busca avançada</h4>
-                        <p>Encontre qualquer email rapidamente com filtros inteligentes</p>
-                    </div>
-                </div>
-                
-                <div class="security-item">
-                    <i class="fas fa-chart-line security-icon"></i>
-                    <div class="security-text">
-                        <h4>relat�rios Detalhados</h4>
-                        <p>Estat�sticas de uso, emails bloqueados, efici�ncia da equipe</p>
+                    <h3>Escalabilidade</h3>
+                    <p>Planos que crescem com sua empresa. Adicione contas e recursos conforme necessário.</p>
+                    <div class="feature-highlights">
+                        <span><i class="fas fa-check"></i> Upgrades flexíveis</span>
+                        <span><i class="fas fa-check"></i> Sem limite de crescimento</span>
+                        <span><i class="fas fa-check"></i> Recursos sob demanda</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Plans Section -->
-    <section class="section" id="plans">
+    <!-- Support Section -->
+    <section class="support-section">
         <div class="container px-4 md:px-8">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Planos Email</span>
-                <h2 class="section-title">Pre�os que Cabem no seu Bolso</h2>
+            <div class="section-header" data-aos="fade-up" style="text-align: center;">
+                <span class="section-subtitle">Sempre ao Seu Lado</span>
+                <h2 class="section-title">
+                    Suporte Técnico
+                    <span class="gradient-text">Completo Incluído</span>
+                </h2>
                 <p class="section-description">
-                    A partir de R$ 15 por usu�rio - muito mais barato que você imagina!
+                    Nossa equipe técnica cuida de tudo para você focar no seu negócio
                 </p>
             </div>
             
-            <div class="solutions-grid">
-                <div class="solution-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="solution-header">
-                        <h3>básico</h3>
-                        <div class="solution-price">
-                            <span class="currency">R$</span>
-                            <span class="amount">15</span>
-                            <span class="period">/usu�rio/m�s</span>
+            <div class="support-grid">
+                <div class="support-content" data-aos="fade-right">
+                    <h3>Assistência Técnica Especializada</h3>
+                    <p>
+                        Ao contratar nossos serviços de hospedagem, você ganha acesso completo ao nosso 
+                        time de suporte técnico especializado. Cuidamos de problemas com emails, 
+                        configurações de site, questões de DNS, SSL e muito mais.
+                    </p>
+                    
+                    <div class="support-list">
+                        <div class="support-item">
+                            <div class="support-item-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="support-item-content">
+                                <h4>Suporte para Emails</h4>
+                                <p>Configuração, troubleshooting, filtros de spam, problemas de envio/recebimento e migração de contas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="support-item">
+                            <div class="support-item-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="support-item-content">
+                                <h4>Suporte para Sites</h4>
+                                <p>Performance, erros, SSL, otimizações, backups, atualizações e questões de segurança do seu site.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="support-item">
+                            <div class="support-item-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="support-item-content">
+                                <h4>Manutenção Preventiva</h4>
+                                <p>Monitoramento proativo, atualizações de segurança e otimizações constantes da infraestrutura.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="support-item">
+                            <div class="support-item-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="support-item-content">
+                                <h4>Consultoria Técnica</h4>
+                                <p>Orientações sobre melhores práticas, configurações avançadas e otimização de recursos.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="solution-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>10GB por caixa de email</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Anti-spam básico</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Sincroniza��o total</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Backup semanal</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Suporte técnico</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="solution-cta">
-                        <span>Contratar Agora</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
                 </div>
                 
-                <div class="solution-card featured" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="featured-badge">MAIS POPULAR</div>
-                    <div class="solution-header">
-                        <h3>Profissional</h3>
-                        <div class="solution-price">
-                            <span class="currency">R$</span>
-                            <span class="amount">25</span>
-                            <span class="period">/usu�rio/m�s</span>
-                        </div>
+                <div class="support-stats" data-aos="fade-left">
+                    <div class="support-stat-card">
+                        <div class="support-stat-number">24/7</div>
+                        <div class="support-stat-label">Disponibilidade</div>
+                        <div class="support-stat-desc">Suporte sempre disponível quando você precisar</div>
                     </div>
-                    <div class="solution-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>50GB por caixa de email</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Anti-spam avan�ado 99.9%</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Calend�rio integrado</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Backup di�rio automático</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Suporte prioritário</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>relat�rios de uso</span>
-                        </div>
+                    
+                    <div class="support-stat-card">
+                        <div class="support-stat-number">&lt; 2h</div>
+                        <div class="support-stat-label">Tempo de Resposta</div>
+                        <div class="support-stat-desc">Respostas rápidas para suas solicitações</div>
                     </div>
-                    <a href="#contact" class="solution-cta">
-                        <span>Contratar Agora</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="solution-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="solution-header">
-                        <h3>Empresarial</h3>
-                        <div class="solution-price">
-                            <span class="currency">R$</span>
-                            <span class="amount">40</span>
-                            <span class="period">/usu�rio/m�s</span>
-                        </div>
+                    
+                    <div class="support-stat-card">
+                        <div class="support-stat-number">98%</div>
+                        <div class="support-stat-label">Satisfação</div>
+                        <div class="support-stat-desc">Clientes satisfeitos com nosso atendimento</div>
                     </div>
-                    <div class="solution-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Armazenamento ilimitado</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Anti-spam + antiv�rus</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Agenda compartilhada</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Backup cont�nuo</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Gerente de conta dedicado</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check"></i>
-                            <span>Integra��es avançadas</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="solution-cta">
-                        <span>Contratar Agora</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="pricing-note" style="text-align: center; margin-top: 40px; padding: 30px; background: rgba(0, 212, 255, 0.1); border-radius: 15px;" data-aos="fade-up">
-                <h4 style="color: var(--primary-color); margin-bottom: 15px;">
-                    ?? Economia Garantida
-                </h4>
-                <p style="color: var(--gray-text); margin-bottom: 10px;">
-                    Compare: Office 365 custa R$ 35/usu�rio/m�s para funcionalidades similares
-                </p>
-                <p style="color: var(--light-text); font-weight: 600;">
-                    Com a Sintrix, você economiza at� 40% e tem suporte nacional especializado!
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container px-4 md:px-8">
-            <div class="cta-content" data-aos="fade-up">
-                <h2>Transforme a comunica��o da sua Empresa!</h2>
-                <p>configuração em 24h. Migra��o gratuita. Treinamento incluso. Teste por 30 dias!</p>
-                <div class="cta-actions">
-                    <a href="#contact" class="btn-primary">
-                        <i class="fas fa-envelope"></i>
-                        <span>Come�ar Agora</span>
-                    </a>
-                    <a href="tel:+5511999999999" class="btn-secondary">
-                        <i class="fas fa-phone"></i>
-                        <span>Falar com Especialista</span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section vpn-contact">
         <div class="container px-4 md:px-8">
-            <div class="section-header" data-aos="fade-up">
+            <div class="section-header" data-aos="fade-up" style="text-align: center;">
                 <span class="section-subtitle">Entre em Contato</span>
-                <h2 class="section-title">Configure seu Email Corporativo</h2>
+                <h2 class="section-title">Comece Agora Mesmo</h2>
                 <p class="section-description">
-                    Nossa equipe vai migrar todos os seus emails sem perder nada
+                    Contrate hospedagem profissional com suporte técnico incluído
                 </p>
             </div>
             
-            <div class="contact-grid">
+            <div class="contact-content">
                 <div class="contact-info" data-aos="fade-right">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Telefone</h4>
-                            <p>+55 (11) 99999-9999</p>
+                            <h4>Telefone Direto</h4>
+                            <p>(11) 97377-4109</p>
+                            <p>Fale com nosso time comercial</p>
                         </div>
                     </div>
                     
@@ -851,110 +709,97 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>vendas@sintrixtechnology.com.br</p>
+                            <h4>Email Comercial</h4>
+                            <p>vendas@sintrix.com.br</p>
+                            <p>Resposta em até 2 horas úteis</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
+                            <i class="fas fa-headset"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>WhatsApp</h4>
-                            <p>+55 (11) 99999-9999</p>
+                            <h4>Suporte Técnico</h4>
+                            <p>Disponível 24/7</p>
+                            <p>Para clientes ativos</p>
                         </div>
                     </div>
                 </div>
                 
-                <form class="contact-form" data-aos="fade-left">
-                    <div class="form-group">
-                        <label for="name">Nome Completo</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Atual</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Empresa</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="domain">Dom�nio Desejado</label>
-                        <input type="text" id="domain" name="domain" placeholder="minhaempresa.com.br" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="users">Quantos usuários?</label>
-                        <select id="users" name="users" required>
-                            <option value="">Selecione a quantidade</option>
-                            <option value="1-5">1-5 usuários - A partir de R$ 75/m�s</option>
-                            <option value="6-15">6-15 usuários - A partir de R$ 150/m�s</option>
-                            <option value="16-50">16-50 usuários - A partir de R$ 400/m�s</option>
-                            <option value="50+">50+ usuários - Valor personalizado</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="plan">Plano de Interesse</label>
-                        <select id="plan" name="plan" required>
-                            <option value="">Selecione um plano</option>
-                            <option value="basic">básico - R$ 15/usu�rio/m�s</option>
-                            <option value="professional">Profissional - R$ 25/usu�rio/m�s</option>
-                            <option value="enterprise">Empresarial - R$ 40/usu�rio/m�s</option>
-                            <option value="custom">Preciso de algo personalizado</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Observa��es</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Conte sobre suas necessidades espec�ficas de email..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-primary">
-                        <i class="fas fa-envelope-open"></i>
-                        <span>Solicitar configuração</span>
-                    </button>
-                </form>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="emailForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Nome Completo</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" " required>
+                            <label for="phone">Telefone</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="company" name="company" placeholder=" " required>
+                            <label for="company">Empresa</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Selecione o serviço</option>
+                                <option value="email">Hospedagem de Email</option>
+                                <option value="site">Hospedagem de Site</option>
+                                <option value="ambos">Email + Site</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" 
+                                placeholder="Conte-nos sobre suas necessidades..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary vpn-btn btn-hover-effect">
+                            <span>Solicitar Proposta</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/../includes/cookie-banner.php'; ?>
+<?php include __DIR__ . '/../includes/analytics-tracking.php'; ?>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../public/js/script.js"></script>
     <script>
-        // Inicializar AOS
+        // Animações AOS
         AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
         });
-        
-        // Simular atividade na interface de email
-        const emailItems = document.querySelectorAll('.email-item');
-        let currentActive = 0;
-        
-        setInterval(() => {
-            emailItems.forEach(item => item.style.background = '');
-            emailItems[currentActive].style.background = 'rgba(0, 212, 255, 0.1)';
-            currentActive = (currentActive + 1) % emailItems.length;
-        }, 3000);
+
+        // Formulário de contato
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('emailForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Obrigado pelo contato! Entraremos em contato em breve.');
+                    form.reset();
+                });
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

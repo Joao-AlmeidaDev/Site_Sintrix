@@ -2,25 +2,32 @@
 require_once 'config/config.php';
 
 // Configurações específicas da página
-$page_title = SITE_NAME . ' - ' . SITE_TAGLINE;
-$page_description = '23 anos de excelência em serviços de TI, oferecendo soluções inovadoras e seguras para impulsionar o seu negócio no mundo digital.';
+$page_title = 'Sintrix Technology - Soluções Completas em TI | 23 Anos de Experiência';
+$page_description = 'Empresa de tecnologia em Mogi das Cruzes com 23 anos de experiência. Oferecemos helpdesk, consultoria TI, servidores, segurança, cloud, VoIP, desenvolvimento de software e suporte técnico especializado 24/7 para empresas.';
+$page_keywords = 'sintrix technology, empresa TI mogi das cruzes, suporte técnico, helpdesk, consultoria TI, infraestrutura, servidores, segurança dados, cloud computing, VoIP, telefonia empresarial, desenvolvimento software, RHDocs, MedPlaces, outsourcing TI';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php echo generateMetaTags($page_title, $page_description); ?>
+    <meta name="geo.region" content="BR-SP">
+    <meta name="geo.placename" content="Mogi das Cruzes">
+    <meta name="geo.position" content="-23.5225;-46.1869">
+    <?php echo generateMetaTags($page_title, $page_description, $page_keywords); ?>
+    
+    <!-- Google Analytics -->
+    <?php include 'includes/google-analytics.php'; ?>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="public/assets/favicon.svg?v=<?php echo time(); ?>">
-    <link rel="icon" type="image/x-icon" href="public/assets/favicon.svg?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/png" href="public/assets/favicon.png?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/png" href="public/assets/favicon.png?v=<?php echo time(); ?>">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="public/css/animations.css">
     <link rel="stylesheet" href="public/css/responsive.css">
     <link rel="stylesheet" href="public/css/tailwind-utilities.css">
@@ -28,9 +35,11 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS - Comentado (usando CSS customizado) -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script>
+        // Configuração Tailwind removida
+        /*
         tailwind.config = {
             theme: {
                 extend: {
@@ -44,6 +53,7 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                 }
             }
         }
+        */
     </script>
     
     <!-- FontAwesome Icons -->
@@ -62,30 +72,9 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
         * {
             box-sizing: border-box !important;
         }
-        
-        #preloader {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            max-width: 100vw !important;
-            max-height: 100vh !important;
-            overflow: hidden !important;
-            box-sizing: border-box !important;
-            z-index: 9999 !important;
-        }
     </style>
 </head>
-<body class="loading">
-    <!-- Preloader -->
-    <div id="preloader" style="position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; max-width: 100vw !important; overflow: hidden !important; box-sizing: border-box !important; z-index: 9999 !important;">
-        <div class="loader" style="max-width: 100% !important; overflow: hidden !important;">
-            <div class="scanner" style="max-width: 100% !important; overflow: hidden !important;">
-                <span>Sintrix</span>
-            </div>
-        </div>
-    </div>
+<body>
 
     <?php include 'includes/header.php'; ?>
 
@@ -152,10 +141,12 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                     <span class="section-subtitle">Sobre a Sintrix</span>
                     <h2 class="section-title">23 Anos de Excelência em Tecnologia</h2>
                     <p class="about-description">
-                        Desde 2002, a Sintrix Technology atua como parceira estratégica 
-                        de empresas que buscam inovação e eficiência tecnológica. Nossa experiência 
-                        consolidada nos permite oferecer soluções personalizadas que realmente 
-                        fazem a diferença no seu negócio.
+                        Desde 2002, a <strong>Sintrix Technology</strong> atua como parceira estratégica 
+                        de empresas em <strong>Mogi das Cruzes</strong> e região que buscam <strong>inovação e eficiência tecnológica</strong>. 
+                        Nossa experiência consolidada em <strong>serviços de TI</strong>, <strong>infraestrutura de rede</strong>, 
+                        <strong>segurança da informação</strong> e <strong>desenvolvimento de software</strong> nos permite oferecer 
+                        <strong>soluções personalizadas</strong> que realmente fazem a diferença no seu negócio. 
+                        Somos especialistas em <strong>transformação digital</strong> e <strong>consultoria em tecnologia da informação</strong>.
                     </p>
                 </div>
                 
@@ -368,11 +359,11 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <div class="solution-content">
-                        <h3>WhatsApp Bot</h3>
+                        <h3>Messenger Pro</h3>
                         <p>Chatbot inteligente com automação empresarial</p>
                         <span class="solution-category">Automação</span>
                     </div>
-                    <a href="pages/whatsapp-bot.php" class="solution-btn">
+                    <a href="/pages/messenger-pro.php" class="solution-btn">
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -386,7 +377,7 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                         <p>Sistema próprio com equipamentos em comodato</p>
                         <span class="solution-category">Comunicação</span>
                     </div>
-                    <a href="pages/telefonia-voip.php" class="solution-btn">
+                    <a href="/pages/telefonia-voip.php" class="solution-btn">
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -400,21 +391,21 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                         <i class="fas fa-cloud-upload-alt"></i>
                         <h4>Cloud Data Próprio</h4>
                         <p>Servidores próprios 24/7 com backup automatizado</p>
-                        <a href="pages/cloud-data.php">Saiba mais</a>
+                        <a href="/dhr/pages/cloud-data.php">Saiba mais</a>
                     </div>
                     
                     <div class="infra-item">
                         <i class="fas fa-lock"></i>
                         <h4>VPN Corporativa</h4>
                         <p>Acesso seguro e remoto com criptografia avançada</p>
-                        <a href="pages/vpn-corporativa.php">Saiba mais</a>
+                        <a href="/dhr/pages/vpn-corporativa.php">Saiba mais</a>
                     </div>
                     
                     <div class="infra-item">
                         <i class="fas fa-envelope"></i>
                         <h4>Email Corporativo</h4>
                         <p>Gestão completa de emails e hospedagem segura</p>
-                        <a href="pages/email-corporativo.php">Saiba mais</a>
+                        <a href="/dhr/pages/email-corporativo.php">Saiba mais</a>
                     </div>
                 </div>
             </div>
@@ -440,9 +431,9 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                         </div>
                         <div class="contact-details">
                             <h4>Nosso Escritório</h4>
-                            <p>Rua da Tecnologia, 123<br>
-                            Centro - Cidade/SP<br>
-                            CEP: 12345-678</p>
+                            <p>Rua Borges Vieira, 174<br>
+                            Vila Industrial - Mogi das Cruzes/SP<br>
+                            CEP: 08770-100</p>
                         </div>
                     </div>
                     
@@ -452,8 +443,7 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                         </div>
                         <div class="contact-details">
                             <h4>Telefone</h4>
-                            <p>(11) 99999-9999<br>
-                            (11) 3333-3333</p>
+                            <p>(11) 97377-4109<br>
                         </div>
                     </div>
                     
@@ -463,8 +453,8 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                         </div>
                         <div class="contact-details">
                             <h4>Email</h4>
-                            <p>contato@sintrixtechnology.com.br<br>
-                            comercial@sintrixtechnology.com.br</p>
+                            <p>contato@sintrix.com.br<br>
+                            comercial@sintrix.com.br</p>
                         </div>
                     </div>
                     
@@ -474,8 +464,8 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                         </div>
                         <div class="contact-details">
                             <h4>Horário de Atendimento</h4>
-                            <p>Segunda a Sexta: 8h às 18h<br>
-                            Suporte 24/7 disponível</p>
+                            <p>Segunda a Sexta: 8h às 17h<br>
+                            Suporte 8/5 disponível</p>
                         </div>
                     </div>
                 </div>
@@ -507,7 +497,7 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
                                 <option value="voip">Telefonia VoIP</option>
                                 <option value="rhdocs">RHDocs</option>
                                 <option value="medplaces">MedPlaces</option>
-                                <option value="whatsapp">WhatsApp Bot</option>
+                                <option value="messenger">Messenger Pro</option>
                                 <option value="outros">Outros</option>
                             </select>
                             <label for="service">Serviço de Interesse</label>
@@ -529,6 +519,8 @@ $page_description = '23 anos de excelência em serviços de TI, oferecendo solu�
     </section>
 
     <?php include 'includes/footer.php'; ?>
+    <?php include 'includes/cookie-banner.php'; ?>
+    <?php include 'includes/analytics-tracking.php'; ?>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

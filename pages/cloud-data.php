@@ -2,19 +2,20 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <?php include __DIR__ . '/../includes/google-analytics.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cloud Data - Armazenamento em Nuvem | Sintrix Technology</title>
     <meta name="description" content="Tenha seu Próprio cloud data 100% privado e seguranÃ§auro. Armazenamento em nuvem exclusivo da Sintrix sem dependéncia de terceiros. Acesse de qualquer lugar!">
     <meta name="keywords" content="cloud data, armazenamento nuvem, backup, dados seguranÃ§auros, cloud privado">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../public/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="../public/assets/favicon.png?v=<?php echo time(); ?>">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../public/css/animations.css">
     <link rel="stylesheet" href="../public/css/responsive.css">
     <link rel="stylesheet" href="../public/css/tailwind-utilities.css">
@@ -1435,6 +1436,171 @@
         }
         
         /* Melhorias no formulário */
+        .cloud-contact .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+            align-items: start;
+        }
+        
+        .cloud-contact .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .cloud-contact .contact-item {
+            display: flex;
+            gap: 20px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(15, 52, 96, 0.6));
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            align-items: flex-start;
+        }
+        
+        .cloud-contact .contact-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .cloud-contact .contact-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            background: linear-gradient(135deg, var(--primary-color), #8a2be2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .cloud-contact .contact-icon i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .cloud-contact .contact-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .cloud-contact .contact-details h4 {
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .cloud-contact .contact-details p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .cloud-contact .contact-form {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(15, 52, 96, 0.6));
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .cloud-contact .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .cloud-contact .form-group input,
+        .cloud-contact .form-group select,
+        .cloud-contact .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .cloud-contact .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .cloud-contact .form-group input:focus,
+        .cloud-contact .form-group select:focus,
+        .cloud-contact .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .cloud-contact .form-group label {
+            position: absolute;
+            top: 14px;
+            left: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0 5px;
+        }
+        
+        .cloud-contact .form-group select + label {
+            display: none;
+        }
+        
+        .cloud-contact .form-group input:focus + label,
+        .cloud-contact .form-group input:not(:placeholder-shown) + label,
+        .cloud-contact .form-group textarea:focus + label,
+        .cloud-contact .form-group textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .cloud-contact button[type="submit"] {
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary-color), #8a2be2);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .cloud-contact button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+        
+        /* Responsividade para a seção de contato */
+        @media (max-width: 968px) {
+            .cloud-contact .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
         .contact-form {
             background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(15, 52, 96, 0.6));
             padding: 40px;
@@ -1486,6 +1652,37 @@
             font-size: 1.5rem;
             color: var(--primary-color);
         }
+        
+        /* Responsividade para Planos */
+        @media (max-width: 1200px) {
+            .solutions-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 25px !important;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .solutions-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+            }
+            
+            .solution-card.modern {
+                padding: 30px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .solutions-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .solution-card.modern.featured {
+                transform: scale(1) !important;
+                margin: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1505,7 +1702,7 @@
                 <!-- Conteúdo Centralizado -->
                 <div data-aos="fade-up" style="margin-bottom: 60px;">
                     <div style="display: inline-block; background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(138, 43, 226, 0.2)); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(0, 212, 255, 0.3); margin-bottom: 25px;">
-                        <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">☁️ Cloud Storage Privado</span>
+                        <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Cloud Storage Privado</span>
                     </div>
                     <h1 class="hero-title" style="font-size: 3rem; line-height: 1.2; margin-bottom: 25px;">
                         Seu <span class="gradient-text" style="position: relative; display: inline-block;">Cloud Data Próprio
@@ -1524,7 +1721,7 @@
                     <p class="hero-description" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 35px; max-width: 800px; margin-left: auto; margin-right: auto;">
                         Tenha total controle sobre seus dados com nossa infraestrutura exclusiva. 
                         Sem dependência de terceiros, sem limitações, sem surpresas.<br>
-                        <strong style="color: var(--primary-color); font-size: 1.15rem;">✨ Seus dados ficam apenas com você!</strong>
+                        <strong style="color: var(--primary-color); font-size: 1.15rem;">Seus dados ficam apenas com você!</strong>
                     </p>
                     
                     <div class="hero-features" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 35px;">
@@ -1726,7 +1923,7 @@
         <div class="container px-4 md:px-8" style="position: relative; z-index: 2;">
             <div class="section-header" data-aos="fade-up">
                 <div style="display: inline-block; background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(138, 43, 226, 0.2)); padding: 10px 25px; border-radius: 30px; border: 1px solid rgba(0, 212, 255, 0.3); margin-bottom: 25px;">
-                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">🚀 Tecnologia Avançada</span>
+                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Tecnologia Avançada</span>
                 </div>
                 <h2 class="section-title" style="font-size: 3.2rem; margin-bottom: 20px; font-weight: 700; letter-spacing: -1px; background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.8)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Por que escolher nosso Cloud Data?</h2>
                 <p class="section-description" style="font-size: 1.2rem; max-width: 750px; margin: 0 auto; color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
@@ -1746,9 +1943,9 @@
                         <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; color: #ffffff;">Segurança Máxima</h3>
                         <p style="color: rgba(255, 255, 255, 0.75); line-height: 1.7; margin-bottom: 20px;">Criptografia AES-256 de nível militar, autenticação multi-fator e conformidade com LGPD garantem proteção total dos seus dados.</p>
                         <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            <span style="background: rgba(0, 212, 255, 0.2); color: var(--primary-color); padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500;">AES-256</span>
-                            <span style="background: rgba(0, 212, 255, 0.2); color: var(--primary-color); padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500;">LGPD</span>
-                            <span style="background: rgba(0, 212, 255, 0.2); color: var(--primary-color); padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500;">Zero Trust</span>
+                            <span style="background: rgba(0, 212, 255, 0.15); color: #ffffff; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0, 212, 255, 0.3);">AES-256</span>
+                            <span style="background: rgba(0, 212, 255, 0.15); color: #ffffff; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0, 212, 255, 0.3);">LGPD</span>
+                            <span style="background: rgba(0, 212, 255, 0.15); color: #ffffff; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0, 212, 255, 0.3);">Zero Trust</span>
                         </div>
                     </div>
                 </div>
@@ -1778,7 +1975,7 @@
                         <i class="fas fa-server" style="font-size: 1.5rem; color: var(--primary-color);"></i>
                     </div>
                     <h4 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: #ffffff;">Infraestrutura Dedicada</h4>
-                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.6;">Servidores exclusivos no Brasil com uptime de 99.9% garantido por SLA.</p>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.6;">Servidores exclusivos no Brasil com uptime de 99% garantido por SLA.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="150" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 20px; padding: 30px; text-align: center; transition: all 0.3s ease;">
@@ -1810,16 +2007,12 @@
             <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(138, 43, 226, 0.1)); border-radius: 25px; padding: 50px 40px; margin-top: 60px; text-align: center;" data-aos="fade-up">
                 <div style="display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap;">
                     <div style="text-align: center; min-width: 150px;">
-                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px;">99.9%</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px;">99%</div>
                         <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Uptime Garantido</p>
                     </div>
                     <div style="text-align: center; min-width: 150px;">
                         <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px;">24/7</div>
                         <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Monitoramento</p>
-                    </div>
-                    <div style="text-align: center; min-width: 150px;">
-                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px;">ISO 27001</div>
-                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Certificação</p>
                     </div>
                     <div style="text-align: center; min-width: 150px;">
                         <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px;">30 Dias</div>
@@ -1831,13 +2024,14 @@
     </section>
 
     <!-- Plans Section -->
+    <!--
     <section class="section" id="plans" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(15, 52, 96, 0.3)); position: relative;">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.1), transparent 70%);"></div>
         
         <div class="container px-4 md:px-8" style="position: relative; z-index: 2;">
             <div class="section-header" data-aos="fade-up">
                 <div style="display: inline-block; background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(138, 43, 226, 0.2)); padding: 10px 25px; border-radius: 30px; border: 1px solid rgba(0, 212, 255, 0.3); margin-bottom: 25px;">
-                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">💎 Planos Premium</span>
+                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Planos Premium</span>
                 </div>
                 <h2 class="section-title" style="font-size: 3.2rem; margin-bottom: 20px; font-weight: 700; letter-spacing: -1px; background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.8)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Escolha o Plano Ideal</h2>
                 <p class="section-description" style="font-size: 1.2rem; max-width: 750px; margin: 0 auto; color: rgba(255, 255, 255, 0.7);">
@@ -1845,235 +2039,179 @@
                 </p>
             </div>
             
-            <!-- Pricing Toggle -->
-            <div style="display: flex; justify-content: center; margin-bottom: 50px;" data-aos="fade-up">
-                <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 22px; padding: 2px; display: flex; gap: 2px;">
-                    <button class="pricing-toggle active" onclick="togglePricing('monthly')" style="background: linear-gradient(135deg, var(--primary-color), #8a2be2); color: #ffffff; border: none; padding: 6px 12px; border-radius: 18px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem;">Mensal</button>
-                    <button class="pricing-toggle" onclick="togglePricing('yearly')" style="background: transparent; color: rgba(255, 255, 255, 0.7); border: none; padding: 6px 12px; border-radius: 18px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem;">Anual</button>
-                </div>
-            </div>
+
 
             
-            <div class="solutions-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+            <div class="solutions-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto;">-->
                 <!-- Starter Plan -->
-                <div class="solution-card modern" data-aos="fade-up" data-aos-delay="100" style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 52, 96, 0.8)); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 25px; padding: 35px; position: relative; overflow: hidden; transition: all 0.4s ease;">
+                <!--<div class="solution-card modern" data-aos="fade-up" data-aos-delay="100" style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 52, 96, 0.8)); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 25px; padding: 35px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column;">
                     <div style="position: absolute; top: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent); border-radius: 50%;"></div>
                     
-                    <div style="position: relative; z-index: 2;">
+                    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; flex: 1;">
                         <div style="margin-bottom: 25px;">
                             <div style="background: rgba(0, 212, 255, 0.15); width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
                                 <i class="fas fa-rocket" style="font-size: 1.5rem; color: var(--primary-color);"></i>
                             </div>
                             <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Starter</h3>
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Ideal para pequenas equipes</p>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; min-height: 40px;">Ideal para pequenas equipes</p>
                         </div>
                         
                         <div style="margin-bottom: 30px;">
-                            <div class="price-monthly" style="display: flex; align-items: baseline; gap: 5px;">
-                                <span style="font-size: 3rem; font-weight: 700; color: #ffffff;">R$ 180</span>
+                            <div style="display: flex; align-items: baseline; gap: 5px;">
+                                <span style="font-size: 3rem; font-weight: 700; color: #ffffff; line-height: 1;">R$ 180</span>
                                 <span style="color: rgba(255, 255, 255, 0.6); font-size: 1rem;">/mês</span>
-                            </div>
-                            <div class="price-yearly" style="display: none; align-items: baseline; gap: 5px;">
-                                <span style="font-size: 3rem; font-weight: 700; color: #ffffff;">R$ 144</span>
-                                <span style="color: rgba(255, 255, 255, 0.6); font-size: 1rem;">/mês</span>
-                            </div>
-                            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">Faturamento mensal</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 30px;">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">100GB de Armazenamento SSD</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Até 5 Usuários</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Backup Automático Diário</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Suporte Técnico Padrão</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Disco Mapeado Windows</span>
                             </div>
                         </div>
                         
-                        <a href="#contact" style="display: block; background: linear-gradient(135deg, rgba(0, 212, 255, 0.8), rgba(0, 212, 255, 0.6)); color: #ffffff; padding: 15px 25px; border-radius: 15px; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(0, 212, 255, 0.5);">
-                            Começar Agora
+                        <div style="margin-bottom: 30px; flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">100GB de Armazenamento</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Até 5 Usuários</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Backup Automático Diário</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Suporte Técnico Padrão</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="btn-hover-effect" style="display: block; background: linear-gradient(135deg, rgba(0, 212, 255, 0.8), rgba(0, 212, 255, 0.6)); color: #ffffff; padding: 15px 25px; border-radius: 15px; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(0, 212, 255, 0.5);">
+                            <span>Começar Agora</span>
                         </a>
                     </div>
-                </div>
+                </div>-->
                 
                 <!-- Professional Plan -->
-                <div class="solution-card modern featured" data-aos="fade-up" data-aos-delay="200" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 212, 255, 0.15)); border: 2px solid var(--primary-color); border-radius: 25px; padding: 35px; position: relative; overflow: hidden; transform: scale(1.05); transition: all 0.4s ease;">
-                    <!-- Highlight Badge -->
-                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--primary-color), #8a2be2); color: #ffffff; padding: 8px 25px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);">
+               <!-- <div class="solution-card modern featured" data-aos="fade-up" data-aos-delay="200" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 212, 255, 0.15)); border: 2px solid var(--primary-color); border-radius: 25px; padding: 35px 35px 15px 35px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column;">-->
+                    <!-- Highlight Badge 
+                    <div style="position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--primary-color), #8a2be2); color: #ffffff; padding: 8px 25px; border-radius: 0 0 20px 20px; font-weight: 600; font-size: 0.85rem; box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4); z-index: 3;">
                         MAIS POPULAR
                     </div>
                     
                     <div style="position: absolute; top: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(138, 43, 226, 0.2), transparent); border-radius: 50%;"></div>
                     
-                    <div style="position: relative; z-index: 2; margin-top: 20px;">
+                    <div style="position: relative; z-index: 2; margin-top: 25px; display: flex; flex-direction: column; flex: 1;">
                         <div style="margin-bottom: 25px;">
                             <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(138, 43, 226, 0.3)); width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
                                 <i class="fas fa-crown" style="font-size: 1.5rem; color: var(--primary-color);"></i>
                             </div>
                             <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Professional</h3>
-                            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Para equipes em crescimento</p>
+                            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; min-height: 40px;">Para equipes em crescimento</p>
                         </div>
                         
                         <div style="margin-bottom: 30px;">
-                            <div class="price-monthly" style="display: flex; align-items: baseline; gap: 5px;">
-                                <span style="font-size: 3rem; font-weight: 700; color: var(--primary-color);">R$ 320</span>
+                            <div style="display: flex; align-items: baseline; gap: 5px;">
+                                <span style="font-size: 3rem; font-weight: 700; color: var(--primary-color); line-height: 1;">R$ 320</span>
                                 <span style="color: rgba(255, 255, 255, 0.6); font-size: 1rem;">/mês</span>
-                            </div>
-                            <div class="price-yearly" style="display: none; align-items: baseline; gap: 5px;">
-                                <span style="font-size: 3rem; font-weight: 700; color: var(--primary-color);">R$ 256</span>
-                                <span style="color: rgba(255, 255, 255, 0.6); font-size: 1rem;">/mês</span>
-                            </div>
-                            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">Faturamento mensal</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 30px;">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">500GB de Armazenamento SSD</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Até 15 Usuários</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Backup Automático 3x/dia</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Suporte Prioritário 24/7</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">API de Integração</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Analytics Avançado</span>
                             </div>
                         </div>
                         
-                        <a href="#contact" style="display: block; background: linear-gradient(135deg, var(--primary-color), #8a2be2); color: #ffffff; padding: 15px 25px; border-radius: 15px; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);">
-                            Começar Agora
+                        <div style="margin-bottom: 30px; flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">500GB de Armazenamento</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Até 15 Usuários</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Backup Automático 2x/dia</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(0, 212, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: var(--primary-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Suporte Prioritário 8/5</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="btn-hover-effect" style="display: block; background: linear-gradient(135deg, var(--primary-color), #8a2be2); color: #ffffff; padding: 15px 25px; border-radius: 15px; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);">
+                            <span>Começar Agora</span>
                         </a>
                     </div>
-                </div>
+                </div>-->
                 
-                <!-- Enterprise Plan -->
-                <div class="solution-card modern" data-aos="fade-up" data-aos-delay="300" style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 52, 96, 0.8)); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 25px; padding: 35px; position: relative; overflow: hidden; transition: all 0.4s ease;">
+                <!-- Enterprise Plan 
+                <div class="solution-card modern" data-aos="fade-up" data-aos-delay="300" style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 52, 96, 0.8)); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 25px; padding: 35px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column;">
                     <div style="position: absolute; top: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent); border-radius: 50%;"></div>
                     
-                    <div style="position: relative; z-index: 2;">
+                    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; flex: 1;">
                         <div style="margin-bottom: 25px;">
                             <div style="background: rgba(138, 43, 226, 0.15); width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
                                 <i class="fas fa-building" style="font-size: 1.5rem; color: #8a2be2;"></i>
                             </div>
                             <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Enterprise</h3>
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Para grandes organizações</p>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; min-height: 40px;">Para grandes organizações</p>
                         </div>
                         
                         <div style="margin-bottom: 30px;">
-                            <div class="price-monthly" style="display: flex; align-items: baseline; gap: 5px;">
-                                <span style="font-size: 3rem; font-weight: 700; color: #ffffff;">R$ 580</span>
+                            <div style="display: flex; align-items: baseline; gap: 5px;">
+                                <span style="font-size: 3rem; font-weight: 700; color: #ffffff; line-height: 1;">R$ 580</span>
                                 <span style="color: rgba(255, 255, 255, 0.6); font-size: 1rem;">/mês</span>
-                            </div>
-                            <div class="price-yearly" style="display: none; align-items: baseline; gap: 5px;">
-                                <span style="font-size: 3rem; font-weight: 700; color: #ffffff;">R$ 464</span>
-                                <span style="color: rgba(255, 255, 255, 0.6); font-size: 1rem;">/mês</span>
-                            </div>
-                            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">Faturamento mensal</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 30px;">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">2TB de Armazenamento SSD</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Usuários Ilimitados</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Backup Contínuo em Tempo Real</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Gerente de Conta Dedicado</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Integração Personalizada</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
-                                </div>
-                                <span style="color: #ffffff; font-weight: 500;">Relatórios Executivos</span>
                             </div>
                         </div>
                         
-                        <a href="#contact" style="display: block; background: linear-gradient(135deg, rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.6)); color: #ffffff; padding: 15px 25px; border-radius: 15px; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(138, 43, 226, 0.5);">
-                            Falar com Especialista
+                        <div style="margin-bottom: 30px; flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">1TB de Armazenamento</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Até 25 Usuários</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Backup Contínuo em Tempo Real</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <div style="width: 20px; height: 20px; background: rgba(138, 43, 226, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-check" style="color: #8a2be2; font-size: 0.8rem;"></i>
+                                </div>
+                                <span style="color: #ffffff; font-weight: 500; font-size: 0.95rem;">Gerente de Conta Dedicado</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="btn-hover-effect" style="display: block; background: linear-gradient(135deg, rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.6)); color: #ffffff; padding: 15px 25px; border-radius: 15px; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(138, 43, 226, 0.5);">
+                            <span>Falar com Especialista</span>
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>-->
             
-            <!-- Enterprise Features -->
+            <!-- Enterprise Features 
             <div style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(15, 52, 96, 0.2)); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 25px; padding: 40px; margin-top: 60px; text-align: center;" data-aos="fade-up">
                 <h3 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 30px; color: #ffffff;">Recursos Enterprise Inclusos em Todos os Planos</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
-                    <div style="text-align: center;">
-                        <i class="fas fa-certificate" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                        <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Certificação ISO 27001</h4>
-                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem;">Padrão internacional de segurança</p>
-                    </div>
                     <div style="text-align: center;">
                         <i class="fas fa-gavel" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
                         <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Conformidade LGPD</h4>
@@ -2081,7 +2219,7 @@
                     </div>
                     <div style="text-align: center;">
                         <i class="fas fa-shield-check" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                        <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">SLA 99.9%</h4>
+                        <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">SLA 99%</h4>
                         <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem;">Garantia de disponibilidade</p>
                     </div>
                     <div style="text-align: center;">
@@ -2093,13 +2231,13 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- CTA Section -->
     <section class="cta-section" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(138, 43, 226, 0.1)); position: relative; overflow: hidden;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%); animation: rotateGradient 20s linear infinite;"></div>
         <div class="container px-4 md:px-8">
             <div class="cta-content" data-aos="fade-up" style="position: relative; z-index: 2;">
-                <div style="font-size: 4rem; margin-bottom: 20px;">🚀</div>
                 <h2 style="font-size: 2.8rem; margin-bottom: 20px;">Pronto para ter seu Cloud Data Privado?</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 40px;">Configure seu armazenamento seguro em menos de 24 horas. <strong style="color: var(--primary-color);">Teste grátis por 30 dias!</strong></p>
                 <div class="cta-actions">
@@ -2117,11 +2255,11 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section cloud-contact">
         <div class="container px-4 md:px-8">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-subtitle" style="background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(138, 43, 226, 0.2)); padding: 10px 25px; border-radius: 30px; border: 1px solid rgba(0, 212, 255, 0.3); display: inline-block; margin-bottom: 20px;">
-                    📞 Entre em Contato
+                    Entre em Contato
                 </span>
                 <h2 class="section-title" style="font-size: 3rem; margin-bottom: 20px;">Vamos Configurar seu Cloud Data</h2>
                 <p class="section-description" style="font-size: 1.2rem;">
@@ -2129,86 +2267,91 @@
                 </p>
             </div>
             
-            <div class="contact-grid">
+            <div class="contact-content">
                 <div class="contact-info" data-aos="fade-right">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Telefone</h4>
-                            <p>+55 (11) 99999-9999</p>
+                            <h4>Telefone Direto</h4>
+                            <p>(11) 97377-4109</p>
+                            <p>Fale com nossos especialistas</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-shield-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>contato@sintrixtechnology.com.br</p>
+                            <h4>Segurança Garantida</h4>
+                            <p>Certificações internacionais</p>
+                            <p>e criptografia avançada</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
+                            <i class="fas fa-clock"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>WhatsApp</h4>
-                            <p>+55 (11) 99999-9999</p>
+                            <h4>Migração Rápida</h4>
+                            <p>Seus dados na nuvem</p>
+                            <p>em até 24 horas</p>
                         </div>
                     </div>
                 </div>
                 
-                <form class="contact-form" data-aos="fade-left">
-                    <div class="form-group">
-                        <label for="name">Nome Completo</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Corporativo</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Empresa</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Telefone</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="storage">Necessidade de Armazenamento</label>
-                        <select id="storage" name="storage" required>
-                            <option value="">Selecione uma opção</option>
-                            <option value="100gb">Até 100GB - Essencial (R$ 180/mês)</option>
-                            <option value="500gb">Até 500GB - Profissional (R$ 320/mês)</option>
-                            <option value="2tb">Até 2TB - Empresarial (R$ 580/mês)</option>
-                            <option value="custom">Personalizado - Sob consulta</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Mensagem</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre suas necessidades específicas..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-primary">
-                        <i class="fas fa-paper-plane"></i>
-                        <span>Solicitar Proposta</span>
-                    </button>
-                </form>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="cloudForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Nome Completo</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email Empresarial</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" " required>
+                            <label for="phone">Telefone</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="company" name="company" placeholder=" " required>
+                            <label for="company">Empresa</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="storage" name="storage" required>
+                                <option value="">Necessidade de armazenamento?</option>
+                                <option value="100gb">Até 100GB </option>
+                                <option value="500gb">Até 500GB </option>
+                                <option value="1tb">Até 1TB </option>
+                                <option value="custom">Personalizado - Sob consulta</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre suas necessidades de armazenamento e backup..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary cloud-btn btn-hover-effect">
+                            <span>Solicitar Proposta</span>
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
+    <?php include __DIR__ . '/../includes/cookie-banner.php'; ?>
+    <?php include __DIR__ . '/../includes/analytics-tracking.php'; ?>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -2221,45 +2364,18 @@
             once: true
         });
         
-        // Função para alternar entre preços mensais e anuais
-        function togglePricing(type) {
-            const monthlyPrices = document.querySelectorAll('.price-monthly');
-            const yearlyPrices = document.querySelectorAll('.price-yearly');
-            const toggleButtons = document.querySelectorAll('.pricing-toggle');
-            
-            toggleButtons.forEach(btn => btn.classList.remove('active'));
-            
-            if (type === 'monthly') {
-                monthlyPrices.forEach(price => price.style.display = 'flex');
-                yearlyPrices.forEach(price => price.style.display = 'none');
-                event.target.classList.add('active');
-                event.target.style.background = 'linear-gradient(135deg, var(--primary-color), #8a2be2)';
-                event.target.style.color = '#ffffff';
-                
-                // Reset o outro botão
-                const yearlyBtn = document.querySelector('.pricing-toggle:not(.active)');
-                if (yearlyBtn) {
-                    yearlyBtn.style.background = 'transparent';
-                    yearlyBtn.style.color = 'rgba(255, 255, 255, 0.7)';
-                }
-            } else {
-                monthlyPrices.forEach(price => price.style.display = 'none');
-                yearlyPrices.forEach(price => price.style.display = 'flex');
-                event.target.classList.add('active');
-                event.target.style.background = 'linear-gradient(135deg, var(--primary-color), #8a2be2)';
-                event.target.style.color = '#ffffff';
-                
-                // Reset o outro botão
-                const monthlyBtn = document.querySelector('.pricing-toggle:not(.active)');
-                if (monthlyBtn) {
-                    monthlyBtn.style.background = 'transparent';
-                    monthlyBtn.style.color = 'rgba(255, 255, 255, 0.7)';
-                }
-            }
-        }
-        
-        // Adicionar hover effects aos cards
+        // Formulário de contato
         document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('cloudForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Aqui você pode adicionar a lógica de envio do formulário
+                    alert('Obrigado pelo interesse! Em breve nossa equipe entrará em contato para apresentar a melhor solução de Cloud Data para sua empresa.');
+                });
+            }
+            
             const benefitCards = document.querySelectorAll('.benefit-card');
             const featureCards = document.querySelectorAll('.feature-card');
             const solutionCards = document.querySelectorAll('.solution-card.modern');

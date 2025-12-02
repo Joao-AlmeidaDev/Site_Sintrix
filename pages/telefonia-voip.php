@@ -6,18 +6,19 @@ require_once __DIR__ . '/../config/config.php';
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <?php include __DIR__ . '/../includes/google-analytics.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telefonia VoIP Sintrix - Sistema Proprietário | Sintrix Technology</title>
     <meta name="description" content="Sistema VoIP proprietário Sintrix com equipamentos em comodato, economia de 70% e suporte 24/7. Modernize a comunicação da sua empresa.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../public/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="../public/assets/favicon.png?v=<?php echo time(); ?>">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../public/css/animations.css">
     <link rel="stylesheet" href="../public/css/responsive.css">
     <link rel="stylesheet" href="../public/css/tailwind-utilities.css">
@@ -25,8 +26,7 @@ require_once __DIR__ . '/../config/config.php';
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS removido -->
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -45,6 +45,171 @@ require_once __DIR__ . '/../config/config.php';
         }
         nav.navbar .nav-menu {
             font-size: 1rem !important;
+        }
+        
+        /* Melhorias específicas para a seção de contato */
+        .voip-contact .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+            align-items: start;
+        }
+        
+        .voip-contact .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .voip-contact .contact-item {
+            display: flex;
+            gap: 20px;
+            padding: 25px;
+            background: var(--gradient-surface);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+            align-items: flex-start;
+        }
+        
+        .voip-contact .contact-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .voip-contact .contact-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .voip-contact .contact-icon i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .voip-contact .contact-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .voip-contact .contact-details h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            color: var(--light-text);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .voip-contact .contact-details p {
+            color: var(--gray-text);
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .voip-contact .contact-form {
+            background: var(--gradient-surface);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .voip-contact .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .voip-contact .form-group input,
+        .voip-contact .form-group select,
+        .voip-contact .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--dark-card);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            font-family: var(--font-primary);
+        }
+        
+        .voip-contact .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .voip-contact .form-group input:focus,
+        .voip-contact .form-group select:focus,
+        .voip-contact .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(123, 47, 255, 0.1);
+        }
+        
+        .voip-contact .form-group label {
+            position: absolute;
+            top: 14px;
+            left: 18px;
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            pointer-events: none;
+            background: var(--dark-card);
+            padding: 0 5px;
+        }
+        
+        .voip-contact .form-group select + label {
+            display: none;
+        }
+        
+        .voip-contact .form-group input:focus + label,
+        .voip-contact .form-group input:not(:placeholder-shown) + label,
+        .voip-contact .form-group textarea:focus + label,
+        .voip-contact .form-group textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .voip-contact button[type="submit"] {
+            width: 100%;
+            padding: 15px 30px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .voip-contact button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(123, 47, 255, 0.3);
+        }
+        
+        /* Responsividade para a seção de contato */
+        @media (max-width: 968px) {
+            .voip-contact .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
         }
     </style>
     
@@ -796,7 +961,7 @@ require_once __DIR__ . '/../config/config.php';
                             <div class="island-content">
                                 <div class="call-indicator">
                                     <div class="call-dot"></div>
-                                    <span class="call-duration">02:35</span>
+                                    <span class="call-duration">04:20</span>
                                 </div>
                             </div>
                         </div>
@@ -847,26 +1012,12 @@ require_once __DIR__ . '/../config/config.php';
                                     <div class="call-background">
                                         <div class="blur-overlay"></div>
                                     </div>
-                                    
-                                    <div class="caller-profile">
-                                        <div class="caller-avatar-large">
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjUwIiBmaWxsPSIjM0I4MkY2Ii8+CjxzdmcgeD0iMjUiIHk9IjI1IiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik0yNSAyNUMzMC41MjI4IDI1IDM1IDIwLjUyMjggMzUgMTVDMzUgOS40NzcyIDMwLjUyMjggNSAyNSA1QzE5LjQ3NzIgNSAxNSA5LjQ3NzIgMTUgMTVDMTUgMjAuNTIyOCAxOS40NzcyIDI1IDI1IDI1WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTI1IDMwQzE2IDMwIDEwIDM2IDEwIDQ1VjQ1SDQwVjQ1QzQwIDM2IDM0IDMwIDI1IDMwWiIgZmlsbD0id2hpdGUiLz4KPHN2Zz4KPC9zdmc+" alt="Caller Avatar" />
-                                            <div class="avatar-ring"></div>
-                                        </div>
                                         
                                         <div class="caller-details">
                                             <h2 class="caller-name">João Silva</h2>
                                             <p class="caller-subtitle">Departamento Comercial</p>
                                             <p class="caller-number">(11) 98765-4321</p>
                                             <div class="call-info-badges">
-                                                <span class="info-badge">
-                                                    <i class="fas fa-building"></i>
-                                                    Ramal 1001
-                                                </span>
-                                                <span class="info-badge quality">
-                                                    <i class="fas fa-signal"></i>
-                                                    HD Quality
-                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -874,7 +1025,7 @@ require_once __DIR__ . '/../config/config.php';
                                     <!-- Call Timer Display -->
                                     <div class="call-timer-display">
                                         <div class="timer-container">
-                                            <span class="timer-text">02:35</span>
+                                            <span class="timer-text">04:20</span>
                                             <span class="timer-label">Em andamento</span>
                                         </div>
                                         <div class="call-quality-indicator">
@@ -886,55 +1037,10 @@ require_once __DIR__ . '/../config/config.php';
                                             </div>
                                             <span class="quality-text">Excelente</span>
                                         </div>
-                                    </div>
-                                    
-                                    <!-- Call Control Grid -->
-                                    <div class="call-controls-grid">
-                                        <button class="control-btn-modern mute-btn active">
-                                            <div class="btn-icon">
-                                                <i class="fas fa-microphone-slash"></i>
-                                            </div>
-                                            <span class="btn-label">Mudo</span>
-                                        </button>
+                                    </div>          
                                         
-                                        <button class="control-btn-modern keypad-btn">
-                                            <div class="btn-icon">
-                                                <i class="fas fa-th"></i>
-                                            </div>
-                                            <span class="btn-label">Teclado</span>
-                                        </button>
-                                        
-                                        <button class="control-btn-modern speaker-btn">
-                                            <div class="btn-icon">
-                                                <i class="fas fa-volume-up"></i>
-                                            </div>
-                                            <span class="btn-label">Alto-falante</span>
-                                        </button>
-                                        
-                                        <button class="control-btn-modern add-btn">
-                                            <div class="btn-icon">
-                                                <i class="fas fa-plus"></i>
-                                            </div>
-                                            <span class="btn-label">Adicionar</span>
-                                        </button>
-                                        
-                                        <button class="control-btn-modern hold-btn">
-                                            <div class="btn-icon">
-                                                <i class="fas fa-pause"></i>
-                                            </div>
-                                            <span class="btn-label">Pausar</span>
-                                        </button>
-                                        
-                                        <button class="control-btn-modern contacts-btn">
-                                            <div class="btn-icon">
-                                                <i class="fas fa-address-book"></i>
-                                            </div>
-                                            <span class="btn-label">Contatos</span>
-                                        </button>
-                                    </div>
-                                    
                                     <!-- End Call Button -->
-                                    <div class="end-call-section">
+                                    <div class="end-call-section" style="display: flex; justify-content: center; align-items: center;">
                                         <button class="end-call-btn">
                                             <i class="fas fa-phone-slash"></i>
                                         </button>
@@ -1089,8 +1195,8 @@ require_once __DIR__ . '/../config/config.php';
                     <div class="main-card-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>seguranÃ§aurança Máxima</h3>
-                    <p>Comunicação totalmente criptografada, backup automático e redundância de servidores para máxima disponibilidade e seguranÃ§aurança.</p>
+                    <h3>Segurança Máxima</h3>
+                    <p>Comunicação totalmente criptografada, backup automático e redundância de servidores para máxima disponibilidade e segurança.</p>
                     <div class="main-card-features">
                         <span><i class="fas fa-check"></i> Criptografia end-to-end</span>
                         <span><i class="fas fa-check"></i> Backup automático</span>
@@ -1118,8 +1224,8 @@ require_once __DIR__ . '/../config/config.php';
                             <i class="fas fa-voicemail"></i>
                         </div>
                         <div class="additional-content">
-                            <h4>Caixa Postal Inteligente</h4>
-                            <p>Mensagens enviadas por email com transcrição automática</p>
+                            <h4>Gravações de Chamadas</h4>
+                            <p>Solicite ao suporte gravações das suas chamadas quando necessário</p>
                         </div>
                     </div>
                     
@@ -1174,7 +1280,7 @@ require_once __DIR__ . '/../config/config.php';
                 <span class="section-subtitle">Sistema em Ação</span>
                 <h2 class="section-title">Veja Como Funciona na Prática</h2>
                 <p class="section-description">
-                    Explore os mockups interativos e entenda como nosso sistema VoIP 
+                    Entenda como nosso sistema VoIP 
                     revoluciona a comunicação da sua empresa.
                 </p>
             </div>
@@ -1307,7 +1413,7 @@ require_once __DIR__ . '/../config/config.php';
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing Section 
     <section class="pricing-modern">
         <div class="container px-4 md:px-8">
             <div class="section-intro" data-aos="fade-up">
@@ -1334,7 +1440,9 @@ require_once __DIR__ . '/../config/config.php';
                         <span>✓ App mobile incluso</span>
                         <span>✓ Relatórios básicos</span>
                     </div>
-                    <a href="#contact" class="plan-cta">Começar Agora</a>
+                    <a href="#contact" class="plan-cta btn-hover-effect">
+                        <span>Começar Agora</span>
+                    </a>
                 </div>
 
                 <div class="plan-item featured">
@@ -1350,11 +1458,13 @@ require_once __DIR__ . '/../config/config.php';
                     <div class="plan-features">
                         <span>✓ Tudo do Essencial</span>
                         <span>✓ Conferência até 50 pessoas</span>
-                        <span>✓ Caixa postal inteligente</span>
+                        <span>✓ Gravação de Chamadas</span>
                         <span>✓ Relatórios avançados</span>
                         <span>✓ Suporte prioritário</span>
                     </div>
-                    <a href="#contact" class="plan-cta primary">Começar Agora</a>
+                    <a href="#contact" class="plan-cta primary btn-hover-effect">
+                        <span>Começar Agora</span>
+                    </a>
                 </div>
 
                 <div class="plan-item">
@@ -1372,15 +1482,17 @@ require_once __DIR__ . '/../config/config.php';
                         <span>✓ Integração personalizada</span>
                         <span>✓ Gerente dedicado</span>
                     </div>
-                    <a href="#contact" class="plan-cta">Falar com Vendas</a>
+                    <a href="#contact" class="plan-cta btn-hover-effect">
+                        <span>Falar com Vendas</span>
+                    </a>
                 </div>
             </div>
 
             <div class="pricing-footer" data-aos="fade-up" data-aos-delay="400">
-                <p>✓ Equipamentos em comodato • ✓ Instalação gratuita • ✓ Suporte 24/7 • ✓ Sem fidelidade</p>
+                <p>✓ Equipamentos em comodato • ✓ Instalação gratuita • ✓ Suporte 24/7 • ✓ 2 Anos de Contrato</p>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section voip-contact">
@@ -1402,8 +1514,8 @@ require_once __DIR__ . '/../config/config.php';
                         </div>
                         <div class="contact-details">
                             <h4>Telefone Direto</h4>
-                            <p>(11) 99999-9999<br>
-                            Ligue e teste nosso VoIP</p>
+                            <p>(11) 97377-4109</p>
+                            <p>Ligue e teste nosso VoIP</p>
                         </div>
                     </div>
                     
@@ -1413,8 +1525,8 @@ require_once __DIR__ . '/../config/config.php';
                         </div>
                         <div class="contact-details">
                             <h4>Demo ao Vivo</h4>
-                            <p>Demonstração personalizada<br>
-                            com sua estrutura atual</p>
+                            <p>Demonstração personalizada</p>
+                            <p>com sua estrutura atual</p>
                         </div>
                     </div>
                     
@@ -1424,8 +1536,8 @@ require_once __DIR__ . '/../config/config.php';
                         </div>
                         <div class="contact-details">
                             <h4>Instalação Rápida</h4>
-                            <p>Sistema funcionando<br>
-                            em até 48 horas</p>
+                            <p>Sistema funcionando</p>
+                            <p>em até 48 horas</p>
                         </div>
                     </div>
                 </div>
@@ -1433,22 +1545,22 @@ require_once __DIR__ . '/../config/config.php';
                 <div class="contact-form" data-aos="fade-left">
                     <form id="voipForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder=" " required>
                             <label for="name">Nome Completo</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder=" " required>
                             <label for="email">Email Empresarial</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="phone" placeholder=" " required>
                             <label for="phone">Telefone</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="company" name="company" required>
+                            <input type="text" id="company" name="company" placeholder=" " required>
                             <label for="company">Empresa</label>
                         </div>
                         
@@ -1460,13 +1572,10 @@ require_once __DIR__ . '/../config/config.php';
                                 <option value="26-50">26 a 50 ramais</option>
                                 <option value="50+">Mais de 50 ramais</option>
                             </select>
-                            <label for="ramais">Número de Ramais</label>
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" 
-                                placeholder="Conte-nos sobre sua estrutura atual de telefonia e necessidades..."></textarea>
-                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre sua estrutura atual de telefonia e necessidades..."></textarea>
                         </div>
                         
                         <button type="submit" class="btn-primary voip-btn btn-hover-effect">
@@ -1480,6 +1589,8 @@ require_once __DIR__ . '/../config/config.php';
     </section>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/../includes/cookie-banner.php'; ?>
+<?php include __DIR__ . '/../includes/analytics-tracking.php'; ?>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
