@@ -358,3 +358,67 @@ img {
         overflow: hidden !important;
     }
 }
+
+/* Benefits Section Responsive */
+@media (max-width: 968px) {
+    .benefits-modern {
+        padding: 60px 0;
+    }
+    
+    .section-intro {
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+    
+    .benefit-row,
+    .benefit-row.reverse {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        margin-bottom: 50px;
+        padding: 0 15px;
+    }
+    
+    .benefit-row.reverse .benefit-visual {
+        order: 0 !important;
+    }
+    
+    .benefit-icon-large {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .benefit-icon-large i {
+        font-size: 42px !important;
+    }
+    
+    .benefit-content {
+        text-align: center;
+    }
+    
+    .benefit-highlights {
+        align-items: center;
+    }
+    
+    .highlight-item {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .benefits-modern {
+        padding: 40px 0;
+    }
+    
+    .benefit-icon-large {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .benefit-icon-large i {
+        font-size: 36px !important;
+    }
+    
+    .benefit-row {
+        margin-bottom: 40px;
+    }
+}

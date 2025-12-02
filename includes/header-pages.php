@@ -3,8 +3,8 @@
     <div class="nav-container px-4 md:px-8">
         <div class="nav-logo">
             <a href="../index.php">
-                <img src="../public/assets/logo.svg" alt="Sintrix Logo" class="logo-img">
-                <span class="logo-text">Sintrix</span>
+                <img src="../public/assets/logo.png" alt="Sintrix Logo" class="logo-img">
+                <span class="logo-text">SINTRIX</span>
             </a>
         </div>
         

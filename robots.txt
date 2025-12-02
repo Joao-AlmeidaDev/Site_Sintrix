@@ -1,21 +1,29 @@
+# Sintrix Technology - Robots.txt
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.sintrixtechnology.com.br/sitemap.xml
+Sitemap: https://www.sintrix.com.br/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 1
+# Crawl-delay para não sobrecarregar o servidor
+Crawl-delay: 0
 
-# Disallow sensitive files
-Disallow: /assets/
+# Bloquear arquivos desnecessários
+Disallow: /config/
+Disallow: /scripts/
+Disallow: /docs/
 Disallow: /*.css$
 Disallow: /*.js$
 Disallow: /.htaccess
 Disallow: /README.md
 
-# Allow specific asset types for indexing
-Allow: /assets/*.jpg
-Allow: /assets/*.png
-Allow: /assets/*.svg
-Allow: /assets/*.webp
+# Permitir indexação de imagens e recursos importantes
+Allow: /public/assets/*.jpg
+Allow: /public/assets/*.png
+Allow: /public/assets/*.svg
+Allow: /public/assets/*.webp
+Allow: /public/css/
+Allow: /public/js/
+
+# Bloquear páginas específicas se necessário
+# Disallow: /pages/404.php

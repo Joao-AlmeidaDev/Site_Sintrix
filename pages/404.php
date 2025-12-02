@@ -2,18 +2,19 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <?php include __DIR__ . '/../includes/google-analytics.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Não Encontrada - Sintrix Technology</title>
     <meta name="description" content="A página que você procura não foi encontrada. Visite nossa página inicial para conhecer nossos serviços de TI.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../public/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="../public/assets/favicon.png?v=<?php echo time(); ?>">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css?v=<?php echo time(); ?>">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -290,6 +291,8 @@
             });
         });
     </script>
+    <?php include __DIR__ . '/../includes/cookie-banner.php'; ?>
+    <?php include __DIR__ . '/../includes/analytics-tracking.php'; ?>
 </body>
 </html>
 

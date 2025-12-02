@@ -1,0 +1,13 @@
+{
+    "name": "sintrix/site",
+    "description": "Site Sintrix",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

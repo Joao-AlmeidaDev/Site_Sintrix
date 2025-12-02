@@ -1,0 +1,80 @@
+# ==========================================
+# ARQUIVOS SENSÍVEIS - NÃO SUBIR NO GITHUB
+# ==========================================
+
+# Configurações de Email com Senhas
+config/email.config.php
+
+# EXCEÇÕES: Arquivos exemplo PODEM subir
+!*.example.php
+!*.sample.php
+!*.template.php
+!*.example
+!*.sample
+!*.template
+
+# Logs
+logs/
+*.log
+
+# Composer
+vendor/
+composer.lock
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.cache
+
+# Backups (exceto exemplos)
+*.bak
+*.backup
+*.old
+# Mas permite backups exemplo/template
+!*.example.bak
+!*.sample.bak
+!*.template.bak
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (se usar)
+node_modules/
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.production
+
+# Uploads de usuários (se houver)
+uploads/*
+!uploads/.gitkeep
+
+# Cache PHP
+*.cache.php
+
+# Arquivos de sessão
+sessions/
+
+# Arquivos de teste
+test-*.php
+debug-*.php
+
+# Certificados SSL (se houver localmente)
+*.pem
+*.key
+*.crt
+
+# Banco de dados local
+*.sql
+*.sqlite
+*.db

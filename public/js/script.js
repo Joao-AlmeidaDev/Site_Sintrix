@@ -1,7 +1,6 @@
 // Inicialização quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar todas as funcionalidades
-    initPreloader();
     initNavigation();
     initAnimations();
     initCounters();
@@ -10,59 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initParticles();
     initTypingEffect();
     initSmoothScroll();
-    
-    // Remover preloader após carregamento
-    window.addEventListener('load', function() {
-        setTimeout(() => {
-            const preloader = document.getElementById('preloader');
-            const navbar = document.getElementById('navbar');
-            
-            if (preloader) {
-                // Fade out mais suave do preloader
-                preloader.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                preloader.style.opacity = '0';
-                
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                    
-                    // Remover classe loading e mostrar conteúdo
-                    document.body.classList.remove('loading');
-                    
-                    // Mostrar navbar com delay suave
-                    setTimeout(() => {
-                        if (navbar) {
-                            navbar.classList.add('show');
-                        }
-                    }, 100);
-                    
-                }, 800);
-            }
-        }, 800); // Reduzido de 1000ms para 800ms
-    });
 });
-
-// Função do Preloader
-function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-    
-    // Animação mais fluida do scanner
-    const scanner = preloader.querySelector('.scanner');
-    if (scanner) {
-        let dots = 0;
-        const interval = setInterval(() => {
-            dots = (dots + 1) % 4;
-            scanner.style.transition = 'all 0.3s ease';
-            scanner.textContent = 'Sintrix' + '.'.repeat(dots);
-        }, 400); // Mais rápido para parecer mais fluido
-        
-        setTimeout(() => {
-            clearInterval(interval);
-            scanner.style.transition = 'all 0.5s ease';
-            scanner.textContent = 'Sintrix';
-        }, 2500); // Reduzido de 3000ms
-    }
-}
 
 // Navegação e Menu Mobile
 function initNavigation() {
@@ -595,18 +542,8 @@ window.addEventListener('error', function(e) {
     // Aqui você pode implementar um sistema de log de erros
 });
 
-// Service Worker para cache (se necessário)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registrado com sucesso:', registration);
-            })
-            .catch(registrationError => {
-                console.log('Falha no registro do SW:', registrationError);
-            });
-    });
-}
+// Service Worker desativado (não necessário para este site)
+// Se precisar de cache offline no futuro, crie o arquivo sw.js na raiz
 
 // Função para analytics (Google Analytics, etc.)
 function initAnalytics() {
