@@ -2174,6 +2174,15 @@ section {
     color: #4CAF50;
 }
 
+.notification.error {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+}
+
+.notification.error i {
+    color: #f44336;
+}
+
 .notification.show {
     transform: translateX(0);
 }

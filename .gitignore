@@ -13,6 +13,10 @@ config/email.config.php
 !*.sample
 !*.template
 
+# pasta odonto
+odonto/
+
+
 # Logs
 logs/
 *.log

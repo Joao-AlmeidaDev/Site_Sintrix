@@ -1545,23 +1545,23 @@ require_once __DIR__ . '/../config/config.php';
                 <div class="contact-form" data-aos="fade-left">
                     <form id="voipForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <input type="text" id="name" name="name" required>
                             <label for="name">Nome Completo</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder=" " required>
-                            <label for="email">Email Empresarial</label>
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder=" " required>
+                            <input type="tel" id="phone" name="phone" required>
                             <label for="phone">Telefone</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="company" name="company" placeholder=" " required>
-                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company">
+                            <label for="company">Empresa (Opcional)</label>
                         </div>
                         
                         <div class="form-group">
@@ -1572,15 +1572,17 @@ require_once __DIR__ . '/../config/config.php';
                                 <option value="26-50">26 a 50 ramais</option>
                                 <option value="50+">Mais de 50 ramais</option>
                             </select>
+                            <label for="ramais">Número de Ramais</label>
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre sua estrutura atual de telefonia e necessidades..."></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Mensagem</label>
                         </div>
                         
-                        <button type="submit" class="btn-primary voip-btn btn-hover-effect">
-                            <span>Solicitar Demonstração</span>
-                            <i class="fas fa-phone-alt"></i>
+                        <button type="submit" class="btn-primary">
+                            <span>Enviar Mensagem</span>
+                            <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
@@ -1594,6 +1596,7 @@ require_once __DIR__ . '/../config/config.php';
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../public/js/form-handler.js"></script>
     <script src="../public/js/script.js"></script>
     <script>
         // Animações AOS
@@ -1602,18 +1605,7 @@ require_once __DIR__ . '/../config/config.php';
             once: true
         });
         
-        // Formulário de contato
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('voipForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Aqui você pode adicionar a lógica de envio do formulário
-                    alert('Obrigado pelo interesse! Em breve nossa equipe entrará em contato para agendar uma demonstração personalizada do nosso sistema VoIP.');
-                });
-            }
-        });
+        // Formulário gerenciado por form-handler.js
     </script>
 </body>
 </html>

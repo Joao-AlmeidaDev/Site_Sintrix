@@ -949,23 +949,23 @@ require_once __DIR__ . '/../config/config.php';
                 <div class="contact-form" data-aos="fade-left">
                     <form id="whatsappForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <input type="text" id="name" name="name" required>
                             <label for="name">Nome Completo</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder=" " required>
-                            <label for="email">Email Empresarial</label>
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder=" " required>
-                            <label for="phone">WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <label for="phone">Telefone</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="company" name="company" placeholder=" " required>
-                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company">
+                            <label for="company">Empresa (Opcional)</label>
                         </div>
                         
                         <div class="form-group">
@@ -976,16 +976,17 @@ require_once __DIR__ . '/../config/config.php';
                                 <option value="5000-10000">5.000 a 10.000 mensagens</option>
                                 <option value="10000+">Mais de 10.000 mensagens</option>
                             </select>
+                            <label for="volume">Volume de Mensagens</label>
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" 
-                                placeholder="Conte-nos sobre seu negócio e necessidades de atendimento..."></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Mensagem</label>
                         </div>
                         
-                        <button type="submit" class="btn-primary whatsapp-btn btn-hover-effect">
-                            <span>Solicitar Demonstração</span>
-                            <i class="fab fa-whatsapp"></i>
+                        <button type="submit" class="btn-primary">
+                            <span>Enviar Mensagem</span>
+                            <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
@@ -999,6 +1000,7 @@ require_once __DIR__ . '/../config/config.php';
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../public/js/form-handler.js"></script>
     <script src="../public/js/script.js"></script>
     <script>
         // Funcionalidade do Simulador de WhatsApp

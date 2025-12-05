@@ -232,9 +232,10 @@ function initializeGoogleAnalytics() {
     });
 }
 
-// Facebook Pixel
+// Facebook Pixel - DESATIVADO (não configurado)
 function initializeFacebookPixel() {
-    // Substitua 'XXXXXXXXXX' pelo seu ID do Facebook Pixel
+    // Descomente e configure quando tiver um Pixel ID válido
+    /*
     const FB_PIXEL_ID = 'XXXXXXXXXX'; // CONFIGURE SEU ID AQUI
     
     !function(f,b,e,v,n,t,s)
@@ -248,11 +249,13 @@ function initializeFacebookPixel() {
     
     fbq('init', FB_PIXEL_ID);
     fbq('track', 'PageView');
+    */
 }
 
-// Google Ads / Google Tag Manager
+// Google Ads / Google Tag Manager - DESATIVADO (não configurado)
 function initializeGoogleAds() {
-    // Substitua 'AW-XXXXXXXXXX' pelo seu ID do Google Ads
+    // Descomente e configure quando tiver um Ads ID válido
+    /*
     const GOOGLE_ADS_ID = 'AW-XXXXXXXXXX'; // CONFIGURE SEU ID AQUI
     
     const gadsScript = document.createElement('script');
@@ -264,6 +267,7 @@ function initializeGoogleAds() {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', GOOGLE_ADS_ID);
+    */
 }
 
 // Hotjar (opcional - ferramenta de heatmap e gravação de sessão)
@@ -316,27 +320,5 @@ function loadExistingConsent() {
 
 // Carregar consentimento existente ao iniciar
 loadExistingConsent();
-
-// Rastreamento de eventos personalizados (exemplos)
-function trackEvent(eventName, eventData = {}) {
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) return;
-    
-    const preferences = JSON.parse(consent);
-    
-    // Google Analytics Event
-    if (preferences.analytics && window.gtag) {
-        gtag('event', eventName, eventData);
-    }
-    
-    // Facebook Pixel Event
-    if (preferences.marketing && window.fbq) {
-        fbq('track', eventName, eventData);
-    }
-}
-
-// Exemplos de uso de rastreamento:
-// trackEvent('button_click', { button_name: 'Ver Planos' });
-// trackEvent('form_submit', { form_name: 'Contato' });
-// trackEvent('page_view', { page_name: document.title });
 </script>
+

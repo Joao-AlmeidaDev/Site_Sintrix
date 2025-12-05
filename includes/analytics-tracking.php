@@ -1,15 +1,15 @@
 <!-- Rastreamento de Eventos de Análise -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Aguardar a função trackEvent estar disponível
-    setTimeout(function() {
-        if (typeof trackEvent !== 'function') {
-            return;
-        }
-        
-        // ========================================
-        // 1. RASTREAMENTO DE BOTÕES CTA
-        // ========================================
+    // Verificar se trackEvent está disponível
+    if (typeof trackEvent !== 'function') {
+        console.warn('trackEvent function not available');
+        return;
+    }
+    
+    // ========================================
+    // 1. RASTREAMENTO DE BOTÕES CTA
+    // ========================================
         document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button, a[href="#contact"]').forEach(btn => {
             btn.addEventListener('click', function() {
                 const buttonText = this.textContent.trim();
@@ -268,7 +268,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
-    }, 1000); // Aguardar 1 segundo para garantir que tudo está carregado
 });
 </script>

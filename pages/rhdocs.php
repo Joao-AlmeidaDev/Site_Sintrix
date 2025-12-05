@@ -432,7 +432,7 @@
                         
                         <div class="form-group">
                             <input type="email" id="email" name="email" required>
-                            <label for="email">Email Corporativo</label>
+                            <label for="email">Email</label>
                         </div>
                         
                         <div class="form-group">
@@ -441,29 +441,29 @@
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="company" name="company" required>
-                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company">
+                            <label for="company">Empresa (Opcional)</label>
                         </div>
                         
                         <div class="form-group">
                             <select id="employees" name="employees" required>
-                                <option value="">N�mero de funcion�rios</option>
-                                <option value="1-50">1 a 50 funcion�rios</option>
-                                <option value="51-200">51 a 200 funcion�rios</option>
-                                <option value="201-500">201 a 500 funcion�rios</option>
-                                <option value="500+">Mais de 500 funcion�rios</option>
+                                <option value="">Número de funcionários</option>
+                                <option value="1-50">1 a 50 funcionários</option>
+                                <option value="51-200">51 a 200 funcionários</option>
+                                <option value="201-500">201 a 500 funcionários</option>
+                                <option value="500+">Mais de 500 funcionários</option>
                             </select>
                             <label for="employees">Porte da Empresa</label>
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre suas necessidades..."></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                             <label for="message">Mensagem</label>
                         </div>
                         
-                        <button type="submit" class="btn-primary btn-hover-effect">
-                            <span>Solicitar Demonstra��o</span>
-                            <i class="fas fa-rocket"></i>
+                        <button type="submit" class="btn-primary">
+                            <span>Enviar Mensagem</span>
+                            <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
@@ -477,6 +477,7 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../public/js/form-handler.js"></script>
     <script src="../public/js/script.js"></script>
     <script>
         // Script espec�fico para RHDocs

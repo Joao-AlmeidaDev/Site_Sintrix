@@ -3088,23 +3088,23 @@ require_once __DIR__ . '/../config/config.php';
                 <div class="contact-form" data-aos="fade-left">
                     <form id="vpnForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <input type="text" id="name" name="name" required>
                             <label for="name">Nome Completo</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder=" " required>
-                            <label for="email">Email Empresarial</label>
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder=" " required>
+                            <input type="tel" id="phone" name="phone" required>
                             <label for="phone">Telefone</label>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="company" name="company" placeholder=" " required>
-                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company">
+                            <label for="company">Empresa (Opcional)</label>
                         </div>
                         
                         <div class="form-group">
@@ -3115,16 +3115,17 @@ require_once __DIR__ . '/../config/config.php';
                                 <option value="51-100">51 a 100 usuários</option>
                                 <option value="100+">Mais de 100 usuários</option>
                             </select>
+                            <label for="users">Número de Usuários</label>
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" 
-                                placeholder="Conte-nos sobre suas necessidades de segurança..."></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Mensagem</label>
                         </div>
                         
-                        <button type="submit" class="btn-primary vpn-btn btn-hover-effect">
-                            <span>Solicitar Demonstração</span>
-                            <i class="fas fa-shield-alt"></i>
+                        <button type="submit" class="btn-primary">
+                            <span>Enviar Mensagem</span>
+                            <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
@@ -3138,6 +3139,7 @@ require_once __DIR__ . '/../config/config.php';
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../public/js/form-handler.js"></script>
     <script src="../public/js/script.js"></script>
     <script>
         // Animações AOS
@@ -3148,33 +3150,8 @@ require_once __DIR__ . '/../config/config.php';
             easing: 'ease-out-cubic'
         });
 
-        // Formulário de contato
+        // Formulário gerenciado por form-handler.js
         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('vpnContactForm');
-            
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Animação de loading no botão
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    const originalContent = submitBtn.innerHTML;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Enviando...</span>';
-                    submitBtn.disabled = true;
-                    
-                    // Simular envio (substitua por sua lógica real)
-                    setTimeout(() => {
-                        submitBtn.innerHTML = '<i class="fas fa-check-circle"></i><span>Enviado com Sucesso!</span>';
-                        
-                        setTimeout(() => {
-                            alert('Obrigado pelo contato! Nossa equipe entrará em contato em breve.');
-                            form.reset();
-                            submitBtn.innerHTML = originalContent;
-                            submitBtn.disabled = false;
-                        }, 1500);
-                    }, 2000);
-                });
-            }
             
             // Animação dos números das estatísticas
             const animateValue = (element, start, end, duration) => {

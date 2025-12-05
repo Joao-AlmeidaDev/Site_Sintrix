@@ -142,7 +142,7 @@ $page_keywords = 'sintrix technology, empresa TI mogi das cruzes, suporte técni
                     <h2 class="section-title">23 Anos de Excelência em Tecnologia</h2>
                     <p class="about-description">
                         Desde 2002, a <strong>Sintrix Technology</strong> atua como parceira estratégica 
-                        de empresas em <strong>Mogi das Cruzes</strong> e região que buscam <strong>inovação e eficiência tecnológica</strong>. 
+                        de empresas que buscam <strong>inovação e eficiência tecnológica</strong>. 
                         Nossa experiência consolidada em <strong>serviços de TI</strong>, <strong>infraestrutura de rede</strong>, 
                         <strong>segurança da informação</strong> e <strong>desenvolvimento de software</strong> nos permite oferecer 
                         <strong>soluções personalizadas</strong> que realmente fazem a diferença no seu negócio. 
@@ -488,6 +488,11 @@ $page_keywords = 'sintrix technology, empresa TI mogi das cruzes, suporte técni
                         </div>
                         
                         <div class="form-group">
+                            <input type="text" id="company" name="company">
+                            <label for="company">Empresa (Opcional)</label>
+                        </div>
+                        
+                        <div class="form-group">
                             <select id="service" name="service" required>
                                 <option value="">Selecione um serviço</option>
                                 <option value="helpdesk">Helpdesk</option>
@@ -524,6 +529,7 @@ $page_keywords = 'sintrix technology, empresa TI mogi das cruzes, suporte técni
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="public/js/form-handler.js"></script>
     <script src="public/js/script.js"></script>
 </body>
 </html>

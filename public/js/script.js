@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initAnimations();
     initCounters();
-    initFormHandling();
+    // initFormHandling(); // Removido - agora usa form-handler.js
     initScrollEffects();
     initParticles();
     initTypingEffect();
@@ -193,34 +193,15 @@ function initCounters() {
     });
 }
 
-// Manipulação do formulário de contato
+// Manipulação do formulário de contato - MOVIDO PARA form-handler.js
+// Mantido apenas para compatibilidade
 function initFormHandling() {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Validação personalizada
-        if (validateForm(this)) {
-            // Simular envio
-            showLoading(this);
-            
-            setTimeout(() => {
-                showSuccess();
-                this.reset();
-            }, 2000);
-        }
-    });
-    
-    // Validação em tempo real
-    const inputs = contactForm.querySelectorAll('input, select, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('blur', () => validateField(input));
-        input.addEventListener('input', () => clearFieldError(input));
-    });
+    // Função movida para form-handler.js
+    // O form-handler.js agora gerencia todos os formulários do site
+    return;
 }
 
+// Funções de validação mantidas para uso do form-handler.js se necessário
 function validateForm(form) {
     let isValid = true;
     const fields = form.querySelectorAll('input[required], select[required], textarea[required]');
@@ -294,42 +275,18 @@ function clearFieldError(field) {
     }
 }
 
+// Funções de notificação movidas para form-handler.js
+// Mantidas aqui apenas para compatibilidade com código legado
 function showLoading(form) {
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) {
-        submitBtn.innerHTML = '<div class="spinner"></div> Enviando...';
-        submitBtn.disabled = true;
-    }
+    // Movido para form-handler.js
 }
 
 function showSuccess() {
-    // Criar notificação de sucesso
-    const notification = document.createElement('div');
-    notification.className = 'notification success';
-    notification.innerHTML = `
-        <i class="fas fa-check-circle"></i>
-        <span>Mensagem enviada com sucesso!</span>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-    
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 3000);
-    
-    // Resetar botão
-    const submitBtn = document.querySelector('#contactForm button[type="submit"]');
-    if (submitBtn) {
-        submitBtn.innerHTML = '<span>Enviar Mensagem</span><i class="fas fa-paper-plane"></i>';
-        submitBtn.disabled = false;
-    }
+    // Movido para form-handler.js
+}
+
+function showError(message) {
+    // Movido para form-handler.js
 }
 
 // Efeitos de scroll
